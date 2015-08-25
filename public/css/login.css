@@ -41,6 +41,9 @@ body{
 .remember{
     color: gray;
 }
-.action a{
-    margin-left: 20px;
+.remember a{
+    margin-left: 40px;
+}
+#loginBtn{
+    width: 175px;
 }
