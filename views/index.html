@@ -18,6 +18,12 @@
             padding-top: 50px;
             padding-bottom: 15px;
         }
+        #shopping-car span{
+            color: orangered;
+        }
+        #shopping-car a:hover{
+            color: orangered;
+        }
     </style>
 </head>
 <body>
@@ -44,7 +50,7 @@
                     <li class="active"><a href="#">综述 <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">简述</a></li>
                     <!--下拉菜单-->
-                    <li class="dropdown">
+                    <li class="dropdown" id="dropdown">
                         <!--下拉菜单外观名字-->
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
                             特点 <span class="caret"></span>
@@ -65,6 +71,26 @@
                     <li><a href="#" data-toggle="modal" data-target="#about">关于</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown" id="consumer">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            买家中心 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">已买到的宝贝</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="owner">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            卖家中心 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">已卖出的宝贝</a></li>
+                            <li><a href="#">出售中的宝贝</a></li>
+                        </ul>
+                    </li>
+                    <li id="shopping-car">
+                        <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+                    </li>
                     <li>
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
@@ -87,11 +113,23 @@
 <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 <script>
     window.onload = function () {
-        $('.dropdown').on('mouseover',function () {
-            $('.dropdown').addClass('open');
+        $('#dropdown').on('mouseover',function () {
+            $('#dropdown').addClass('open');
         });
-        $('.dropdown').on('mouseout',function () {
-            $('.dropdown').removeClass('open');
+        $('#dropdown').on('mouseout',function () {
+            $('#dropdown').removeClass('open');
+        });
+        $('#consumer').on('mouseover',function () {
+            $('#consumer').addClass('open');
+        });
+        $('#consumer').on('mouseout',function () {
+            $('#consumer').removeClass('open');
+        });
+        $('#owner').on('mouseover',function () {
+            $('#owner').addClass('open');
+        });
+        $('#owner').on('mouseout',function () {
+            $('#owner').removeClass('open');
         });
     }
 </script>
