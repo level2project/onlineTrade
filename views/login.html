@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+        <div id="main" class="wraper-login">
+            <div class="timer">
+                <span style="display:inline-block;margin-top:-5px">
+                    <script charset="Shift_JIS"
+                        src="../public/js/honehone_clock_tr.js">
+                    </script>
+                </span>
+            </div>
+            <div class="login">
+                <div class="login-top">
+                    <span class="glyphicon glyphicon-user"> 请登录</span>
+                </div>
+                <form class="login-form">
+                    <p>
+                        <input name="loginName" type="text" id="loginName" placeholder="Username">
+                    </p>
+                    <p>
+                        <input name="loginPsw" type="password" id="loginPsw" placeholder="Password">
+                    </p>
+                    <p class="remember">
+                        <input name="RememberMe" type="checkbox" id="RememberMe">
+                        <label for="RememberMe">记住状态</label>
+                    </p>
+                    <div class="action">
+                        <input name="loginBtn" type="submit" id="loginBtn" value="Login" class="btn btn-primary">
+                        <a href="#">忘记密码</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+</html>
