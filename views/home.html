@@ -5,7 +5,8 @@
     <!--<link href="public/css601/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>-->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="public/js601/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
     <link href="public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -44,6 +45,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
         #search input{
             width: 500px;
+        }
+        .clear-float:after{
+            content:'';
+            display: table;
+            clear:both;
         }
     </style>
 </head>
@@ -126,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--</div>-->
     <div class="container">
         <div class="head-top">
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left clear-float" role="search">
                     <div class="form-group" id="search">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
@@ -262,25 +268,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </ol>
     <!-- Wrapper for slides -->
     <!--轮播组件内容，即图片-->
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner"  role="listbox">
         <div class="item active">
-            <img src="http://ww2.sinaimg.cn/large/005tsyqMgw1eq0ee9qmygj31hc0mcalt.jpg" alt="大白1">
+            <img src="/public/image/first.png" style="padding-left: 8%" alt="大白1">
             <div class="carousel-caption">
-                <h3>第一张图片</h3>
+                <!--<h3>第一张图片</h3>-->
             </div>
         </div>
         <div class="item">
             <!--引入图片-->
-            <img src="http://file28.mafengwo.net/M00/34/4B/wKgB6lUGrOmAJekBABACAexkvIU76.jpeg" alt="大白2">
+            <img src="/public/image/second.png" style="padding-left: 8%" alt="大白2">
             <!--在图片中间写文字-->
             <div class="carousel-caption">
-                <h3>第二张图片</h3>
+                <!--<h3>第二张图片</h3>-->
             </div>
         </div>
         <div class="item">
-            <img src="http://static.oneplus.cn/data/attachment/forum/201503/13/105741o7ql6dmesddcolc0.jpg" alt="(●—●)">
+            <img src="/public/image/third.png" style="padding-left: 8%" alt="(●—●)">
             <div class="carousel-caption">
-                <h3>第三张图片</h3>
+                <!--<h3>第三张图片</h3>-->
             </div>
         </div>
     </div>
@@ -440,10 +446,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--===================================================================-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--<script src="bootstrap-3.3.5-dist/js/jquery.js"></script>-->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!--<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
 			
