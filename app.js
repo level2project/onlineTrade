@@ -20,6 +20,7 @@ app.set('view engine', 'html');
  * 中间件配置
  */
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/')));
 app.use('/', index);
 
 
