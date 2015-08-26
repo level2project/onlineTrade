@@ -20,6 +20,7 @@ app.set('view engine', 'html');
  * 中间件配置
  */
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/')));//为了在html中可以直接查找相关文件，以便修改
 app.use('/', index);
 
 
