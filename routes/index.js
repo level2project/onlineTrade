@@ -2,11 +2,11 @@ var express = require('express');
 var app = express.Router();
 
 app.get('/', function (req, res) {
-    console.log('someone is visiting the index.html');
+    console.log('someone is visiting the home.html');
     res.render('login');
 });
-app.get('/index.html', function (req, res) {
-    //console.log('someone is visiting the index.html');
-    res.render('index');
+app.get('/home.html', function (req, res) {
+    //console.log('someone is visiting the home.html');
+    res.render('home');
 });
 module.exports = app;
