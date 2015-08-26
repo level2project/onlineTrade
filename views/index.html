@@ -104,39 +104,61 @@
         </div>
     </nav>
 </div>
-
+<!--模态框-->
+<!--外三层不改动,仅设置id,为了让点击事件准确找到模态框-->
+<div class="modal fade" id="about">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--内三层分别对应标题/内容/按钮-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">关于</h4>
+            </div>
+            <div class="modal-body">
+                内容随便你怎么写
+            </div>
+            <div class="modal-footer">
+                <!--点击有data-dismiss的按钮,模态框才会消失-->
+                <button type="button" class="btn btn-default" >哦,知道了</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">点我消失</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!--===================================================================-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="bootstrap-3.3.5-dist/js/jquery.js"></script>
+<!--<script src="bootstrap-3.3.5-dist/js/jquery.js"></script>-->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!--<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
     window.onload = function () {
-        $('#coll button').on('mouseover', function () {
-            $('#navbar').collapse('show');
-        });
-        $('#coll button').on('mouseout', function () {
-            $('#navbar').collapse('hide');
-        });
-        $('#dropdown').on('mouseover',function () {
-            $('#dropdown').addClass('open');
-        });
-        $('#dropdown').on('mouseout',function () {
-            $('#dropdown').removeClass('open');
-        });
-        $('#consumer').on('mouseover',function () {
-            $('#consumer').addClass('open');
-        });
-        $('#consumer').on('mouseout',function () {
-            $('#consumer').removeClass('open');
-        });
-        $('#owner').on('mouseover',function () {
-            $('#owner').addClass('open');
-        });
-        $('#owner').on('mouseout',function () {
-            $('#owner').removeClass('open');
-        });
+//        $('#coll button').on('mouseover', function () {
+//            $('#navbar').collapse('show');
+//        });
+//        $('#coll button').on('mouseout', function () {
+//            $('#navbar').collapse('hide');
+//        });
+//        $('#dropdown').on('mouseover',function () {
+//            $('#dropdown').addClass('open');
+//        });
+//        $('#dropdown').on('mouseout',function () {
+//            $('#dropdown').removeClass('open');
+//        });
+//        $('#consumer').on('mouseover',function () {
+//            $('#consumer').addClass('open');
+//        });
+//        $('#consumer').on('mouseout',function () {
+//            $('#consumer').removeClass('open');
+//        });
+//        $('#owner').on('mouseover',function () {
+//            $('#owner').addClass('open');
+//        });
+//        $('#owner').on('mouseout',function () {
+//            $('#owner').removeClass('open');
+//        });
     }
 </script>
 </body>
