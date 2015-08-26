@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Home</title>
-    <link href="public/css601/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--<link href="public/css601/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="public/js601/jquery.min.js"></script>
     <!-- Custom Theme files -->
@@ -22,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--fonts-->
     <!--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>-->
     <!--<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>-->
-    <!--&lt;!&ndash;//fonts&ndash;&gt;-->
+    <!--<!--//fonts-->
     <!-- start menu -->
     <link href="public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="public/js601/memenu.js"></script>
@@ -30,20 +31,107 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $(".memenu").memenu();
     });</script>
     <script src="public/js601/simpleCart.min.js"></script>
+    <style>
+        body{
+            padding-top: 50px;
+            padding-bottom: 15px;
+        }
+        #shopping-car span{
+            color: orangered;
+        }
+        #shopping-car a:hover{
+            color: orangered;
+        }
+        #search input{
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <!--header-->
 <div class="header">
-    <div class="header-top">
+    <!--<div class="header-top">-->
         <div class="container">
-
+            <!--导航栏-->
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <!--如果class为container为居中-->
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header" id="coll">
+                        <!--可折叠-->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="home.html"><span class="glyphicon glyphicon-home"></span></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <!--导航栏实际内容-->
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">综述 <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">简述</a></li>
+                            <!--下拉菜单-->
+                            <li class="dropdown" id="dropdown">
+                                <!--下拉菜单外观名字-->
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
+                                    特点 <span class="caret"></span>
+                                </a>
+                                <!--菜单内容-->
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li class="dropdown-header">下拉菜单标题</li>
+                                    <li><a href="#home">第一个下拉菜单</a></li>
+                                    <li><a href="#profile">第二个下拉菜单</a></li>
+                                    <li class="dropdown-header">下拉菜单标题</li>
+                                    <li><a href="#messages">第三个下拉菜单</a></li>
+                                    <li><a href="#settings">第四个下拉菜单</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">下拉菜单标题</li>
+                                    <li><a href="#settings">分割线下的菜单</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" data-toggle="modal" data-target="#about">关于</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown" id="consumer">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                    买家中心 <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">已买到的宝贝</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="owner">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                    卖家中心 <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">已卖出的宝贝</a></li>
+                                    <li><a href="#">出售中的宝贝</a></li>
+                                </ul>
+                            </li>
+                            <li id="shopping-car">
+                                <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="glyphicon glyphicon-question-sign"></span> 帮助中心</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </div>
+    <!--</div>-->
     <div class="container">
         <div class="head-top">
-            <div class="logo">
-                <a href="home.html"><img src="public/images601/stulog.jpg" alt="" style="height:50px"></a>
-            </div>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group" id="search">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default btn-primary">Submit</button>
+                </form>
             <div class=" h_menu4">
                 <ul class="memenu skyblue">
                     <li class="active grid"><a class="color8" href="home.html">Home</a></li>
@@ -305,6 +393,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
+<!--===================================================================-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="bootstrap-3.3.5-dist/js/jquery.js"></script>-->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!--<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
 			
