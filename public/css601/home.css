@@ -35,3 +35,8 @@ body::-webkit-scrollbar {
 #serverList:hover{
     cursor: pointer;
 }
+@media (max-width: 680px) {
+    #search{
+        display: none;
+    }
+}
