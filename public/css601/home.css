@@ -1,0 +1,34 @@
+body{
+    padding-top: 50px;
+}
+body::-webkit-scrollbar {
+    width: 0;
+}
+#shopping-car span{
+    color: orangered;
+}
+#shopping-car a:hover{
+    color: orangered;
+}
+#search input{
+    width: 500px;
+}
+.clear-float:after{
+    content:'';
+    display: table;
+    clear:both;
+}
+#toTop{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    height: 50px;
+    width: 50px;
+    background-color: orangered;
+    opacity: 0.5;
+    text-align: center;
+}
+#toTop:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
