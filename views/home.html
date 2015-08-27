@@ -59,8 +59,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--导航栏实际内容-->
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="login.html">请登录 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">免费注册</a></li>
+                            <li><a href="login.html" id="login-before">请登录</a></li>
+                            <li><a href="register.html" id="register">免费注册</a></li>
+                            <li><a href=""  id="log-out" class="hide">退出</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown" id="consumer">
@@ -115,8 +116,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--</div>-->
     <div class="container">
         <div class="head-top">
-                <form class="navbar-form navbar-left clear-float" role="search">
-                    <div class="form-group" id="search">
+                <form class="navbar-form navbar-left clear-float" role="search" id="search">
+                    <div class="form-group" >
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default btn-primary">搜索</button>
@@ -438,7 +439,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     window.addEventListener('scroll', function () {
         var scrollTop = $(document).scrollTop();
         var scrollHeight = $(document).height();
-        console.log('H: '+scrollHeight*0.3 +';T: '+scrollTop);
+        //console.log('H: '+scrollHeight*0.3 +';T: '+scrollTop);
         if(scrollTop >= scrollHeight * 0.3) {
             $('#toTop').show();
         } else {
@@ -451,6 +452,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $('#serverList').on('click', function () {
         location.href = '#serverList';
         $(document).scrollTop($(document).scrollTop() - 50);
+    })
+
+    //如果已经登录过了
+    var alreadyLogin = document.cookie;
+    if (alreadyLogin.indexOf('userName=') != -1) {
+        var name = '';
+        for (i = alreadyLogin.indexOf('userName=') + 9; i < alreadyLogin.length && alreadyLogin[i] != ';'; i++) {
+            name += alreadyLogin[i];
+        }
+        $('#login-before').html('welcome, '+decodeURI(name));
+        $('#login-before').attr('href','')
+        $('#register').hide();
+        $('#log-out').removeClass('hide');
+    }
+    $('#log-out').on('click',function(){
+        //删除cookie
+        var date = new Date();
+        date.setTime(date.getTime() - 10);
+        document.cookie = 'userName=abc;expires=' + date.toGMTString();
     })
 </script>
 </body>

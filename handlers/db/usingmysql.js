@@ -28,10 +28,14 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.queryByNamePassword, [userName, password], function (err, result) {
-                    if (result.length == 0) {
-                        res.end('帐号或密码错误');
-                    } else {
-                        res.end('登录成功');
+                    if (!err) {
+                        if (result.length == 0) {
+                            res.end('帐号或密码错误');
+                        } else {
+                            res.end('登录成功');
+                        }
+                    }else {
+                        res.end('database error');
                     }
                     connection.release();
                 });
