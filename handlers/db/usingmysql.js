@@ -7,7 +7,8 @@ var url = require('url')
 var crypto = require('crypto');
 var $conf = require('../db/conf');             //ridiculous!!!
 var $sql = {               //数据库的操作
-    queryByNamePassword: 'select * from user where name=? and password=? '
+    queryByNamePassword: 'select * from user where username=? and password=? ',
+    register: ' insert into user(username,password,email) values(?,?,?);'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -24,31 +25,51 @@ module.exports = {
             res.end('请填写帐号/密码');
             return;
         }
-        //password = md5(password);
+        password = md5(password);
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.queryByNamePassword, [userName, password], function (err, result) {
                     if (!err) {
                         if (result.length == 0) {
+                            console.log('帐号或密码错误')
                             res.end('帐号或密码错误');
                         } else {
+                            console.log('帐号验证成功');
                             res.end('登录成功');
                         }
-                    }else {
-                        res.end('database error');
+                    } else {
+                        res.end('database error 2');
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error 1')
+        });
+    },
+    register: function (req, res, next) {
+        var query = url.parse('?' + req.toString(), true).query;
+        var userName = query.userName;
+        var password = query.password;
+        var email = query.email;
+        //console.log(userName+' '+password+' '+email)
+        if (userName == '' || password == '') {//正常是不会这样的 因为前面有判断
+            res.end('请填写帐号/密码');
+            return;
+        }
+        password = md5(password);
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.register, [userName, password,email], function (err, result) {
+                    if (!err) {
+                        res.end('注册成功');
+                    } else {  //如果出错了 是帐号已被注册
+                        res.end('该帐号已被注册');
                     }
                     connection.release();
                 });
             }
             else res.end('database error')
         });
-
-
-        pool.getConnection(function (err, connection) {
-
-        })
-
-
     }
 };
 

@@ -10,4 +10,9 @@ app.post('/', function (req, res, next) {
         usingmysql.verifyByNamePassword(data, res, next);
     })
 });
+app.post('/register', function (req, res, next) {
+    req.on('data', function (data) {
+        usingmysql.register(data, res, next);
+    })
+});
 module.exports = app;
