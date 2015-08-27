@@ -10,7 +10,7 @@ $('#loginBtn').on('click', function (event) {
     }
     $.post('verify', data, function (text, status) {
         if (JSON.stringify(text) === '"登录成功"') {
-            location.href='home.html';
+            location.href='/';
         } else {
             alert(JSON.stringify(text).slice(1,-1));
         }
