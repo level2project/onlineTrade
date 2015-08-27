@@ -32,3 +32,6 @@ body::-webkit-scrollbar {
     opacity: 0.8;
     cursor: pointer;
 }
+#serverList:hover{
+    cursor: pointer;
+}
