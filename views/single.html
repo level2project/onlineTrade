@@ -44,6 +44,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         #shopping-car a:hover{
             color: orangered;
         }
+        #search input{
+            width: 500px;
+        }
         .footer{
             padding-bottom: 50px;
         }
@@ -434,14 +437,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="available">
                 <ul>
-                    <li>Color
+                    <li>Color:
                         <select>
                             <option>Silver</option>
                             <option>Black</option>
                             <option>Dark Black</option>
                             <option>Red</option>
                         </select></li>
-                    <li class="size-in">Size<select>
+                    <li class="size-in">Size:<select>
                         <option>Large</option>
                         <option>Medium</option>
                         <option>small</option>
@@ -457,7 +460,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><span>SKU</span>
                     <span class="women1">: CK09</span></li>
             </ul>
-            <a href="#" class="add-cart item_add">ADD TO CART</a>
+            <!--<a href="#" class="add-cart item_add ">ADD TO CART</a>-->
+            <br>
+            <a href="#" class="btn btn-default btn-warning btn-lg btn-block" role="button">ADD TO CART</a>
 
         </div>
     </div>
@@ -468,7 +473,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <ul class="cd-tabs-navigation">
                 <li><a data-content="fashion" href="#0">Description </a></li>
                 <li><a data-content="cinema" href="#0">Addtional Informatioan</a></li>
-                <li><a data-content="television" href="#0" class="selected ">Reviews (1)</a></li>
+                <li><a data-content="television" href="#0" class="selected" id="review">Reviews (1)</a></li>
 
             </ul>
         </nav>
@@ -510,7 +515,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
             </li>
-            <li data-content="television" class="selected" id="review">
+            <li data-content="television" class="selected">
                 <div class="comments-top-top">
                     <div class="top-comment-left">
                         <img class="img-responsive" src="images601/co.png" alt="">
