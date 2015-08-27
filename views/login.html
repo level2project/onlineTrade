@@ -2,11 +2,12 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>登录</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <!--<link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/login.css">
+    <script src="/public/bootstrap-3.3.5-dist/js/jquery.js"></script>
 </head>
 <body>
         <div id="main" class="wraper-login">
@@ -21,12 +22,12 @@
                 <div class="login-top">
                     <span class="glyphicon glyphicon-user"> 请登录</span>
                 </div>
-                <form class="login-form">
+                <form class="login-form" id="login-form">
                     <p>
-                        <input name="loginName" type="text" id="loginName" placeholder="Username">
+                        <input name="userName" type="text"  placeholder="Username">
                     </p>
                     <p>
-                        <input name="loginPsw" type="password" id="loginPsw" placeholder="Password">
+                        <input name="password" type="password" placeholder="Password">
                     </p>
                     <div class="remember">
                         <input name="RememberMe" type="checkbox" id="RememberMe">
@@ -39,5 +40,6 @@
                 </form>
             </div>
         </div>
+<script src="/public/js/verify.js"></script>
 </body>
 </html>
