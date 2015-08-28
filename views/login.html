@@ -7,39 +7,41 @@
     <!--<link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/login.css">
-    <script src="/public/bootstrap-3.3.5-dist/js/jquery.js"></script>
+    <script src="/public/js/jquery.js"></script>
 </head>
 <body>
-        <div id="main" class="wraper-login">
-            <div class="timer">
+<div id="main" class="wraper-login">
+    <div class="timer">
                 <span style="display:inline-block;margin-top:-5px">
                     <script charset="Shift_JIS"
-                        src="js/honehone_clock_tr.js">
+                            src="js/honehone_clock_tr.js">
                     </script>
                 </span>
-            </div>
-            <div class="login">
-                <div class="login-top">
-                    <span class="glyphicon glyphicon-user"> 请登录</span>
-                </div>
-                <form class="login-form" id="login-form">
-                    <p>
-                        <input name="userName" type="text"  placeholder="UserName">
-                    </p>
-                    <p>
-                        <input name="password" type="password" placeholder="Password">
-                    </p>
-                    <div class="remember">
-                        <input name="RememberMe" type="checkbox" id="RememberMe">
-                        <label for="RememberMe">记住状态</label>
-                        <a href="home.html" class="right">忘记密码</a>
-                    </div>
-                    <div class="action">
-                        <input name="loginBtn" type="submit" id="loginBtn" value="Login" class="btn btn-primary ">
-                    </div>
-                </form>
-            </div>
+    </div>
+    <div class="login">
+        <div class="login-top">
+            <span class="glyphicon glyphicon-user"> 请登录</span>
         </div>
+        <form class="login-form" id="login-form">
+            <p>
+                <input name="userName" type="text" placeholder="UserName">
+            </p>
+
+            <p>
+                <input name="password" type="password" placeholder="Password">
+            </p>
+
+            <div class="remember">
+                <input name="RememberMe" type="checkbox" id="RememberMe">
+                <label for="RememberMe">记住状态</label>
+                <a href="home.html" class="right">忘记密码</a>
+            </div>
+            <div class="action">
+                <input name="loginBtn" type="submit" id="loginBtn" value="Login" class="btn btn-primary ">
+            </div>
+        </form>
+    </div>
+</div>
 <script src="/public/js/verify.js"></script>
 </body>
 </html>
