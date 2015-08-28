@@ -179,7 +179,7 @@ a.item_add {
 
 .banner{
     background-color: #1a9b1a;
-	/*background: url(../images601/1.jpg) no-repeat ;*/
+	/*background: url(../image/1.jpg) no-repeat ;*/
 	background-size: cover;
 	width:100%;
 	min-height: 560px;
@@ -256,7 +256,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   text-decoration: none;
 height: 35px;
   width: 35px;
-  background: url("../images601/img-sprite.png") no-repeat -13px -98px ;
+  background: url("../image/img-sprite.png") no-repeat -13px -98px ;
  }
 .callbacks_nav.next {
   left: auto;
@@ -586,7 +586,7 @@ ul.social li{
 	display: inline-block;	
 }
 ul.social li i{
-	background: url(../images601/img-sprite.png)no-repeat -9px -14px ;
+	background: url(../image/img-sprite.png)no-repeat -9px -14px ;
   width: 24px;
   height: 24px;
 	display: inline-block;
@@ -721,7 +721,7 @@ ul.social li i:hover{
 .blog-poast-info ul li  i {
 	width: 20px;
 	height: 20px;
-	background:  url(../images601/img-sprite.png) no-repeat -150px -104px ;
+	background:  url(../image/img-sprite.png) no-repeat -150px -104px ;
 	display: inline-block;
 	vertical-align: sub;
 	margin: 0 3px 0 0;
@@ -909,7 +909,7 @@ h3.best {
 }
 /*----*/
 .product-middle{
-	background: url(../images601/product1.jpg) center;
+	background: url(../image/product1.jpg) center;
   width: 100%;
   min-height: 45px;
   display: block;
@@ -1027,7 +1027,7 @@ a.item_add p.number:hover{
   -ms-transition: 0.5s all;
 }
 a.item_add p.number i{	
-	 background: url(../images601/img-sprite.png)no-repeat -291px -104px ;
+	 background: url(../image/img-sprite.png)no-repeat -291px -104px ;
   width: 18px;
   height: 18px;
   display: inline-block;
@@ -1082,7 +1082,7 @@ p.tun{
  ul.star-footer li i{
 	height: 16px;
 	width: 16px;
-	background: url("../images601/img-sprite.png") no-repeat -261px -106px  ;
+	background: url("../image/img-sprite.png") no-repeat -261px -106px  ;
 	display: inline-block;
 }
 .single-para h4 {
@@ -1372,7 +1372,7 @@ a.add-re:hover{
 }
 .checkbox input + i:after {
 	content: '';
-	background: url("../images601/tick1.png") no-repeat 1px 2px;
+	background: url("../image/tick1.png") no-repeat 1px 2px;
 	top: -1px;
 	left: -1px;
 	width: 15px;
@@ -1613,7 +1613,7 @@ a.create {
 } 
 
 .close1,.close2{
-  background: url('../images601/close_1.png') no-repeat 0px 0px;
+  background: url('../image/close_1.png') no-repeat 0px 0px;
   cursor: pointer;
   width: 28px;
   height: 28px;

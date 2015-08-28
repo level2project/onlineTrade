@@ -9,59 +9,18 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
-    <link href="public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
     <!-- start menu -->
-    <link href="public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="public/js601/memenu.js"></script>
-    <script>$(document).ready(function () {
-        $(".memenu").memenu();
-    });</script>
-
-
-    <script src="public/js601/main.js"></script>
-    <script src="public/js601/simpleCart.min.js"></script>
-    <style>
-        body{
-            padding-top: 50px;
-        }
-        body::-webkit-scrollbar {
-            width: 0;
-        }
-        #shopping-car span{
-            color: orangered;
-        }
-        #shopping-car a:hover{
-            color: orangered;
-        }
-        #search input{
-            width: 500px;
-        }
-        .footer{
-            padding-bottom: 50px;
-        }
-        /* tagscloud */
-        #tagscloud{width:260px;height:200px;position:relative;
-            font-size:12px;color:#333;text-align:center;}
-        #tagscloud li{list-style: none;}
-        #tagscloud a{position:absolute;top:0px;left:0px;color:#333;font-family:Arial;
-            text-decoration:none;margin:0 10px 15px 0;line-height:18px;text-align:center;font-size:12px;
-            padding:1px 5px;display:inline-block;border-radius:3px;}
-        #tagscloud a.tagc1{background:#666;color:#fff;}
-        #tagscloud a.tagc2{background:#F16E50;color:#fff;}
-        #tagscloud a.tagc5{background:#006633;color:#fff;}
-        #tagscloud a:hover{color:#fff;background:#0099ff;}
-    </style>
+    <link href="/public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/public/js/memenu.js"></script>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/simpleCart.min.js"></script>
+    <link rel="stylesheet" href="/public/css/single.css">
 </head>
 <body>
 <!--header-->
@@ -75,7 +34,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header" id="coll">
                     <!--可折叠-->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -87,12 +47,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--导航栏实际内容-->
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav">
-                        <li class=""><a href="login.html">请登录 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">免费注册</a></li>
+                        <li><a href="login.html" id="login-before">请登录</a></li>
+                        <li><a href="register.html" id="register">免费注册</a></li>
+                        <li><a href="" id="log-out" class="hide">退出</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown" id="consumer">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
                                 买家中心 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -100,7 +62,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li class="dropdown" id="owner">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
                                 卖家中心 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -126,7 +89,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="modal-content">
                 <!--内三层分别对应标题/内容/按钮-->
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">关于</h4>
                 </div>
                 <div class="modal-body">
@@ -137,9 +101,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <button type="button" class="btn btn-default" data-dismiss="modal">哦,知道了</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">点我消失</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <!--</div>-->
     <div class="container">
         <div class="head-top">
@@ -299,6 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="fit-top">
             <h6 class="shop-top">Lorem Ipsum</h6>
             <a href="#" class="shop-now">SHOP NOW</a>
+
             <div class="clearfix"></div>
         </div>
     </div>
@@ -307,7 +275,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="of-left-in">
             <h3 class="tag">标签</h3>
         </div>
-        <script src="public/js601/tagscloud.js" type="text/javascript"></script>
+        <script src="/public/js/tagscloud.js" type="text/javascript"></script>
         <div class="tagscloud" id="tagscloud">
             <ul>
                 <li><a href="#" class="tagc1">design</a></li>
@@ -330,32 +298,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--左侧热卖栏-->
     <div class="product-bottom">
         <div class="of-left-in">
-            <h3 class="best">Best Sellers</h3>
+            <h3 class="best">Best Reputation</h3>
         </div>
         <div class="product-go">
             <div class=" fashion-grid">
-                <a href="#"><img class="img-responsive " src="images601/p1.jpg" alt=""></a>
+                <a href="#"><img class="img-responsive " src="image/p1.jpg" alt=""></a>
 
             </div>
             <div class=" fashion-grid1">
-                <h6 class="best2"><a href="#">Lorem ipsum dolor sit
-                    amet consectetuer </a></h6>
+                <h6 class="best2"><a href="#">comment
+                    comment </a></h6>
 
-                <span class=" price-in1"> $40.00</span>
+                <span class=" price-in1"> ￥2.00</span>
             </div>
 
             <div class="clearfix"></div>
         </div>
         <div class="product-go">
             <div class=" fashion-grid">
-                <a href="#"><img class="img-responsive " src="images601/p2.jpg" alt=""></a>
+                <a href="#"><img class="img-responsive " src="image/p2.jpg" alt=""></a>
 
             </div>
             <div class="fashion-grid1">
-                <h6 class="best2"><a href="#">Lorem ipsum dolor sit
-                    amet consectetuer </a></h6>
+                <h6 class="best2"><a href="#">comment
+                    comment</a></h6>
 
-                <span class=" price-in1"> $40.00</span>
+                <span class=" price-in1"> ￥2.00</span>
             </div>
 
             <div class="clearfix"></div>
@@ -364,15 +332,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--左侧下方最特价-->
     <div class=" per1">
-        <a href="#"><img class="img-responsive" src="images601/pro.jpg" alt="">
-
-            <div class="six1">
-                <h4>DISCOUNT</h4>
-
-                <p>Up to</p>
-                <span>60%</span>
-            </div>
-        </a>
+        <a href="#"><img class="img-responsive" src="image/pro.jpg" alt=""></a>
     </div>
 </div>
 <!--右侧-->
@@ -381,22 +341,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="col-md-5 single-top">
         <div class="flexslider">
             <ul class="slides">
-                <li data-thumb="images601/si.jpg">
-                    <img src="images601/si.jpg"/>
+                <li data-thumb="image/si.jpg">
+                    <img src="image/si.jpg"/>
                 </li>
-                <li data-thumb="images601/si1.jpg">
-                    <img src="images601/si1.jpg"/>
+                <li data-thumb="image/si1.jpg">
+                    <img src="image/si1.jpg"/>
                 </li>
-                <li data-thumb="images601/si2.jpg">
-                    <img src="images601/si2.jpg"/>
+                <li data-thumb="image/si2.jpg">
+                    <img src="image/si2.jpg"/>
                 </li>
-                <li data-thumb="images601/si.jpg">
-                    <img src="images601/si.jpg"/>
+                <li data-thumb="image/si.jpg">
+                    <img src="image/si.jpg"/>
                 </li>
             </ul>
         </div>
         <!-- FlexSlider -->
-        <script defer src="js601/jquery.flexslider.js"></script>
+        <script defer src="/public/js/jquery.flexslider.js"></script>
         <link rel="stylesheet" href="css601/flexslider.css" type="text/css" media="screen"/>
 
         <script>
@@ -412,7 +372,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--右方商品信息，购买商品-->
     <div class="col-md-7 single-top-in simpleCart_shelfItem">
         <div class="single-para ">
-            <h4>Lorem Ipsum</h4>
+            <h4>To do what</h4>
 
             <div class="star-on">
                 <ul class="star-footer">
@@ -423,45 +383,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#"><i> </i></a></li>
                 </ul>
                 <div class="review">
-                    <a href="#review"> 1 customer review </a>
+                    <a href="#review"> ----- </a>
 
                 </div>
                 <div class="clearfix"></div>
             </div>
 
-            <h5 class="item_price">$ 95.00</h5>
+            <h5 class="item_price">￥ 5.00</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna aliquam erat </p>
-
-            <div class="available">
-                <ul>
-                    <li>Color:
-                        <select>
-                            <option>Silver</option>
-                            <option>Black</option>
-                            <option>Dark Black</option>
-                            <option>Red</option>
-                        </select></li>
-                    <li class="size-in">Size:<select>
-                        <option>Large</option>
-                        <option>Medium</option>
-                        <option>small</option>
-                        <option>Large</option>
-                        <option>small</option>
-                    </select></li>
-                    <div class="clearfix"></div>
-                </ul>
-            </div>
-            <ul class="tag-men">
-                <li><span>TAG</span>
-                    <span class="women1">: Women,</span></li>
-                <li><span>SKU</span>
-                    <span class="women1">: CK09</span></li>
-            </ul>
+            <p>comment comment </p>
+            <!--
+                        <div class="available">
+                            <ul>
+                                <li>Color:
+                                    <select>
+                                        <option>Silver</option>
+                                        <option>Black</option>
+                                        <option>Dark Black</option>
+                                        <option>Red</option>
+                                    </select></li>
+                                <li class="size-in">Size:<select>
+                                    <option>Large</option>
+                                    <option>Medium</option>
+                                    <option>small</option>
+                                    <option>Large</option>
+                                    <option>small</option>
+                                </select></li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <ul class="tag-men">
+                            <li><span>TAG</span>
+                                <span class="women1">: Women,</span></li>
+                            <li><span>SKU</span>
+                                <span class="women1">: CK09</span></li>
+                        </ul>
+            -->
             <!--<a href="#" class="add-cart item_add ">ADD TO CART</a>-->
-            <br>
+
+            <br><br><br><br><br>
             <a href="#" class="btn btn-default btn-warning btn-lg btn-block" role="button">ADD TO CART</a>
 
         </div>
@@ -480,12 +440,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <ul class="cd-tabs-content">
             <li data-content="fashion">
                 <div class="facts">
-                    <p> There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                        alteration in some form, by injected humour, or randomised words which don't look even slightly
-                        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
-                        anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the
-                        Internet tend to repeat predefined chunks as necessary, making this the first true generator on
-                        the Internet. It uses a dictionary of over 200 Latin words, combined </p>
+                    <p> say something </p>
                     <ul>
                         <li>Research</li>
                         <li>Design and Development</li>
@@ -500,14 +455,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <li data-content="cinema">
                 <div class="facts1">
 
-                    <div class="color"><p>Color</p>
-                        <span>Blue, Black, Red</span>
+                    <div class="color"><p>something1</p>
+                        <span>somthing2</span>
 
                         <div class="clearfix"></div>
                     </div>
                     <div class="color">
-                        <p>Size</p>
-                        <span>S, M, L, XL</span>
+                        <p>somthing3</p>
+                        <span>somthing4</span>
 
                         <div class="clearfix"></div>
                     </div>
@@ -518,10 +473,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <li data-content="television" class="selected">
                 <div class="comments-top-top">
                     <div class="top-comment-left">
-                        <img class="img-responsive" src="images601/co.png" alt="">
+                        <img class="img-responsive" src="image/co.png" alt="">
                     </div>
                     <div class="top-comment-right">
-                        <h6><a href="#">Hendri</a> - September 3, 2014</h6>
+                        <h6><a href="#">Joe</a> - September 10, 2015</h6>
                         <ul class="star-footer">
                             <li><a href="#"><i> </i></a></li>
                             <li><a href="#"><i> </i></a></li>
@@ -543,45 +498,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class=" bottom-product">
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="images601/pi3.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi3.jpg" alt="">
 
                     <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
+                        <span class="buy-in">want it</span>
                     </div>
                 </a>
             </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
+            <p class="tun">-----</p>
+            <a href="#" class="item_add"><p class="number item_price"><i> </i>￥5.00</p></a>
         </div>
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="images601/pi1.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi1.jpg" alt="">
 
                     <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
+                        <span class="buy-in">want it</span>
                     </div>
                 </a>
             </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a></div>
+            <p class="tun">-----</p>
+            <a href="#" class="item_add"><p class="number item_price"><i> </i>￥5.00</p></a></div>
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="images601/pi4.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi4.jpg" alt="">
 
                     <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
+                        <span class="buy-in">want it</span>
                     </div>
                 </a>
             </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a></div>
+            <p class="tun">-----</p>
+            <a href="#" class="item_add"><p class="number item_price"><i> </i>￥5.00</p></a></div>
         <div class="clearfix"></div>
     </div>
 </div>
 
 <div class="clearfix"></div>
-</div><!--结束栅格布局-->
-</div><!--结束商品页面-->
+</div>
+<!--结束栅格布局-->
+</div>
+<!--结束商品页面-->
 <!--//content-->
 <div class="footer">
     <div class="container">
@@ -606,20 +563,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li></li>
                 </ul>
             </div>
-            <!--<div class="col-md-4 amet-sed">-->
-            <!--<h4>newsletter</h4>-->
-
-            <!--<p>Sign Up to get all news update and promo</p>-->
-
-            <!--<form>-->
-            <!--<input type="text" value="" onfocus="this.value='';"-->
-            <!--onblur="if (this.value == '') {this.value ='';}">-->
-            <!--<input type="submit" value="Sign up">-->
-            <!--</form>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
+<script src="/public/js/single.js"></script>
 </body>
 </html>
 			
