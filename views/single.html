@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signle</title>
-    <!--<link href="public/css601/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>-->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- Custom Theme files -->
-    <!--theme-style-->
-    <link href="/public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!--//theme-style-->
+    <title>Goods</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
-    <!-- start menu -->
-    <link href="/public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="/public/js/memenu.js"></script>
+
+    <link href="/public/css601/style.css" rel="stylesheet" media="all"/>
+    <link href="/public/css601/memenu.css" rel="stylesheet" media="all"/>
+    <link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/single.css">
+
+    <script src="/public/js/jquery-2.1.4.js"></script>
+    <script src="/public/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="/public/js/memenu.js"></script>
     <script src="/public/js/main.js"></script>
     <script src="/public/js/simpleCart.min.js"></script>
-    <link rel="stylesheet" href="/public/css/single.css">
+
 </head>
 <body>
 <!--header-->
@@ -197,83 +194,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 <!--左侧-->
 <div class="col-md-3 product-price">
-    <!--左侧列表栏-->
-    <div class=" rsidebar span_1_of_left">
-        <div class="of-left">
-            <h3 class="cate">左侧栏目</h3>
-        </div>
-        <ul class="menu">
-            <li class="item1"><a href="#">项目1 </a>
-                <ul class="cute">
-                    <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                    <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                    <li class="subitem3"><a href="#">Automatic Fails </a></li>
-                </ul>
-            </li>
-            <li class="item2"><a href="#">项目2 </a>
-                <ul class="cute">
-                    <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                    <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                    <li class="subitem3"><a href="#">Automatic Fails </a></li>
-                </ul>
-            </li>
-            <li class="item3"><a href="#">项目3 </a>
-                <ul class="cute">
-                    <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                    <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                    <li class="subitem3"><a href="#">Automatic Fails</a></li>
-                </ul>
-            </li>
-            <li class="item4"><a href="#">项目4 </a>
-                <ul class="cute">
-                    <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                    <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                    <li class="subitem3"><a href="#">Automatic Fails</a></li>
-                </ul>
-            </li>
 
-            <li class="item4"><a href="#">项目5 </a>
-                <ul class="cute">
-                    <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                    <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                    <li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <!--左侧列表JS代码-->
-    <script type="text/javascript">
-        $(function () {
-            var menu_ul = $('.menu > li > ul'),
-                    menu_a = $('.menu > li > a');
-            menu_ul.hide();
-            menu_a.click(function (e) {
-                e.preventDefault();
-                if (!$(this).hasClass('active')) {
-                    menu_a.removeClass('active');
-                    menu_ul.filter(':visible').slideUp('normal');
-                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                } else {
-                    $(this).removeClass('active');
-                    $(this).next().stop(true, true).slideUp('normal');
-                }
-            });
-
-        });
-    </script>
-    <!--列表下面，标签上面-->
-    <div class="product-middle">
-        <div class="fit-top">
-            <h6 class="shop-top">Lorem Ipsum</h6>
-            <a href="#" class="shop-now">SHOP NOW</a>
-
-            <div class="clearfix"></div>
-        </div>
-    </div>
     <!--标签Tags-->
     <div class="sellers">
         <div class="of-left-in">
-            <h3 class="tag">标签</h3>
+            <h3 class="tag">Tags</h3>
         </div>
         <script src="/public/js/tagscloud.js" type="text/javascript"></script>
         <div class="tagscloud" id="tagscloud">
@@ -293,7 +218,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"></div>
             </ul>
         </div>
+    </div>
+    <!--列表下面，标签上面-->
+    <div class="product-middle">
+        <div class="fit-top">
+            <h6 class="shop-top">123</h6>
+            <a href="#" class="shop-now">456</a>
 
+            <div class="clearfix"></div>
+        </div>
     </div>
     <!--左侧热卖栏-->
     <div class="product-bottom">
@@ -498,7 +431,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class=" bottom-product">
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="image/pi3.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi.jpg" alt="">
 
                     <div class="pro-grid">
                         <span class="buy-in">want it</span>
@@ -510,7 +443,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="image/pi1.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi.jpg" alt="">
 
                     <div class="pro-grid">
                         <span class="buy-in">want it</span>
@@ -521,7 +454,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a href="#" class="item_add"><p class="number item_price"><i> </i>￥5.00</p></a></div>
         <div class="col-md-4 bottom-cd simpleCart_shelfItem">
             <div class="product-at ">
-                <a href="#"><img class="img-responsive" src="image/pi4.jpg" alt="">
+                <a href="#"><img class="img-responsive" src="image/pi.jpg" alt="">
 
                     <div class="pro-grid">
                         <span class="buy-in">want it</span>
