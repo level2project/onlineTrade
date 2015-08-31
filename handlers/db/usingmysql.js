@@ -8,7 +8,8 @@ var crypto = require('crypto');
 var $conf = require('../db/conf');             //ridiculous!!!
 var $sql = {               //数据库的操作
     queryByNamePassword: 'select * from user where username=? and password=? ',
-    register: ' insert into user(username,password,email) values(?,?,?);'
+    register: ' insert into user(username,password,email) values(?,?,?);',
+    getGoods: ' select pname,ptext,picture1 from product'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -69,6 +70,21 @@ module.exports = {
                 });
             }
             else res.end('database error')
+        });
+    },
+    getGoods: function (res, next) {
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.getGoods, function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {  //如果出错了 是帐号已被注册
+                        res.end('database error '+err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error '+err)
         });
     }
 };
