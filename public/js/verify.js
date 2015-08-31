@@ -8,7 +8,7 @@ $('#loginBtn').on('click', function (event) {
         alert("帐号或密码不能为空");
         return;
     }
-    $.post('verify', data, function (text, status) {
+    $.post('/verify', data, function (text, status) {
         if (JSON.stringify(text) === '"登录成功"') {
             document.cookie = 'userName=' + (/=.+&/.exec(data)).toString().slice(1,-1);
             location.href='/';
