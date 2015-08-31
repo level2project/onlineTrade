@@ -2,19 +2,37 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>注册</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <!--<link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/login.css">
     <script src="/public/js/jquery-2.1.4.js"></script>
+    <style>
+        .login-top span{
+            padding-left: 50px;
+        }
+        #registerBtn{
+            width: 100px;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+        .action{
+            position: relative;
+        }
+        .action a{
+            position: absolute;
+            bottom: 0;
+            right: 50px;
+        }
+    </style>
 </head>
 <body>
 <div id="main" class="wraper-login">
     <div class="timer">
                 <span style="display:inline-block;margin-top:-5px">
                     <script charset="Shift_JIS"
-                            src="js/honehone_clock_tr.js">
+                            src="/public/js/honehone_clock_tr.js">
                     </script>
                 </span>
     </div>
@@ -34,6 +52,7 @@
             </p>
             <div class="action">
                 <input type="submit" id="registerBtn" value="register" class="btn btn-primary ">
+                <a href="home.html" class="btn btn-default btn-xs" role="button">暂不注册</a>
             </div>
         </form>
     </div>
