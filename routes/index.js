@@ -17,4 +17,7 @@ app.get('/register.html', function (req, res) {
 app.get('/single.html', function (req, res) {
     res.render('single');
 });
+app.get('/checkout.html', function (req, res) {
+    res.render('checkout');
+});
 module.exports = app;

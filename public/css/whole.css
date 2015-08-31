@@ -1,0 +1,33 @@
+body {
+    padding-top: 50px;
+}
+body::-webkit-scrollbar {
+    width: 0;
+}
+/*header start*/
+#shopping-car span {
+    color: orangered;
+}
+#navbar a:hover{
+    color: orangered;
+}
+#search input {
+    width: 500px;
+}
+#search input:focus{
+    border: 1px solid orangered;
+    /*box-shadow: 0px 0px 5px 2px;*/
+}
+#search button:hover{
+    background-color: orangered;
+    color: #ffffff;
+    border: 1px solid orangered;
+}
+/*header end*/
+
+/*footer start*/
+#about-us:hover{
+    text-decoration: none;
+    color: orangered;
+}
+/*footer end*/

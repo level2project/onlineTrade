@@ -1,21 +1,26 @@
 body {
     padding-top: 50px;
 }
-
 body::-webkit-scrollbar {
     width: 0;
 }
-
 #shopping-car span {
     color: orangered;
 }
-
-#shopping-car a:hover {
+#navbar a:hover{
     color: orangered;
 }
-
 #search input {
     width: 500px;
+}
+#search input:focus{
+    border: 1px solid orangered;
+    /*box-shadow: 0px 0px 5px 2px;*/
+}
+#search button:hover{
+    background-color: orangered;
+    color: #ffffff;
+    border: 1px solid orangered;
 }
 
 .footer {
@@ -70,4 +75,9 @@ body::-webkit-scrollbar {
 #tagscloud a:hover {
     color: #fff;
     background: #0099ff;
+}
+
+#about-us:hover{
+    text-decoration: none;
+    color: orangered;
 }

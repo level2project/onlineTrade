@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <!--<link href="public/css601/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="/public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--fonts-->
+    <!--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>&lt;!&ndash;//fonts&ndash;&gt;
+    -->
+    <!-- start menu -->
+    <link href="/public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/public/js/memenu.js"></script>
+    <script>$(document).ready(function () {
+        $(".memenu").memenu();
+    });</script>
+    <script src="/public/js/simpleCart.min.js"></script>
+    <link href="/public/css/whole.css" rel="stylesheet">
+    <style>
+        a.order {
+            background:#EF5F21;
+            padding: 10px 20px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            text-align: center;
+            margin:3em 0 1em 0;
+        }
+        a.continue:hover{
+            background-color: orangered;
+        }
+        a.order:hover{
+            background:orangered;
+        }
+        a.cpns{
+            text-decoration: none;
+        }
+        a.cpns:hover{
+            background:orangered;
+        }
+        .close{
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            font-size: 24px;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: color 0.2s ease-in-out;
+            -moz-transition: color 0.2s ease-in-out;
+            -o-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+        }
+        .cart-header{
+            padding-top: 10px;
+            border-radius: 1px;
+        }
+        .cart-header:hover{
+            box-shadow: 0 0 3px 1px orangered;
+        }
+        #empty {
+            padding: 88px 0 100px 156px;
+            background: url(/public/image/empty-cart.png) 40px 86px no-repeat;
+            position: relative;
+        }
+        #empty ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <!--<div class="header-top">-->
+    <div class="container">
+        <!--导航栏-->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <!--如果class为container为居中-->
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header" id="coll">
+                    <!--可折叠-->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><span class="glyphicon glyphicon-home"></span></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!--导航栏实际内容-->
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="login.html" id="login-before">请登录</a></li>
+                        <li><a href="register.html" id="register">免费注册</a></li>
+                        <li><a href="" id="log-out" class="hide">退出</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="consumer">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
+                                买家中心 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">已买到的宝贝</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="owner">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
+                                卖家中心 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">已卖出的宝贝</a></li>
+                                <li><a href="#">出售中的宝贝</a></li>
+                            </ul>
+                        </li>
+                        <li id="shopping-car">
+                            <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-question-sign"></span> 帮助中心</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--模态框-->
+    <!--外三层不改动,仅设置id,为了让点击事件准确找到模态框-->
+    <div class="modal fade" id="about">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--内三层分别对应标题/内容/按钮-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">关于</h4>
+                </div>
+                <div class="modal-body">
+                    introduce ourselves?
+                </div>
+                <div class="modal-footer">
+                    <!--点击有data-dismiss的按钮,模态框才会消失-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">哦,知道了</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">点我消失</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!--</div>-->
+    <div class="container">
+        <div class="head-top">
+            <form class="navbar-form navbar-left clear-float" role="search" id="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default btn-primary">搜索</button>
+            </form>
+            <div class=" h_menu4" id="sub-header">
+                <ul class="memenu skyblue">
+                    <li class="active grid"><a class="color5" href="home.html">Home</a></li>
+                    <li><a class="color1" href="#">服务<span class="caret"></span></a>
+
+                        <div class="mepanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">111</a></li>
+                                            <li><a href="products.html">222</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">333</a></li>
+                                            <li><a href="products.html">444</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Popular</h4>
+                                        <ul>
+                                            <li><a href="products.html">555</a></li>
+                                            <li><a href="products.html">666</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="grid"><a class="color1" href="#">商品<span class="caret"></span></a>
+
+                        <div class="mepanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">111</a></li>
+                                            <li><a href="products.html">222</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">333</a></li>
+                                            <li><a href="products.html">444</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Popular</h4>
+                                        <ul>
+                                            <li><a href="products.html">555</a></li>
+                                            <li><a href="products.html">666</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<!--content-->
+<div class="container">
+    <div class="check">
+        <h1>我的购物车 (3)</h1>
+        <!--购物车商品列表-->
+        <div class="col-md-9 cart-items" id="item-lists">
+            <!--当购物车为空时显示-->
+            <div id="empty" class="hide">
+                <h4><strong>您的购物车还是空的，赶紧行动吧！您可以：</strong></h4>
+                <ul>
+                    <li>看看 <a href="#" target="_blank">已买到的宝贝</a></li>
+                    <li>或者 <a href="home.html" target="_blank">去购物</a></li>
+                </ul>
+            </div>
+            <!--购物车商品-->
+            <div class="cart-header">
+                <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    <div class="cart-item cyc">
+                        <img src="images601/pic1.jpg" class="img-responsive" alt=""/>
+                    </div>
+                    <div class="cart-item-info">
+                        <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3577</span></h3>
+                        <ul class="qty">
+                            <li><p>Size : 5</p></li>
+                            <li><p>Qty : 1</p></li>
+                        </ul>
+
+                        <div class="delivery">
+                            <p>Service Charges : Rs.100.00</p>
+                            <span>Delivered in 2-3 bussiness days</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+
+            <div class="cart-header">
+                <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    <div class="cart-item cyc">
+                        <img src="images601/pic2.jpg" class="img-responsive" alt=""/>
+                    </div>
+                    <div class="cart-item-info">
+                        <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
+                        <ul class="qty">
+                            <li><p>Size : 5</p></li>
+                            <li><p>Qty : 1</p></li>
+                        </ul>
+                        <div class="delivery">
+                            <p>Service Charges : Rs.100.00</p>
+                            <span>Delivered in 2-3 bussiness days</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="cart-header">
+                <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    <div class="cart-item cyc">
+                        <img src="images601/pic2.jpg" class="img-responsive" alt=""/>
+                    </div>
+                    <div class="cart-item-info">
+                        <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3579</span></h3>
+                        <ul class="qty">
+                            <li><p>Size : 5</p></li>
+                            <li><p>Qty : 1</p></li>
+                        </ul>
+                        <div class="delivery">
+                            <p>Service Charges : Rs.100.00</p>
+                            <span>Delivered in 2-3 bussiness days</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--结算-->
+        <div class="col-md-3 cart-total">
+            <a class="continue" href="#">继续购物</a>
+            <!--购物小票-->
+            <div class="price-details">
+                <h3>价格清单</h3>
+                <span>总共</span>
+                <span class="total1">6200.00</span>
+                <span>折扣</span>
+                <span class="total1">---</span>
+                <span>运送费用</span>
+                <span class="total1">150.00</span>
+                <div class="clearfix"></div>
+            </div>
+            <!--总价-->
+            <ul class="total_price">
+                <li class="last_price"><h4>总计</h4></li>
+                <li class="last_price"><span>6350.00</span></li>
+                <div class="clearfix"></div>
+            </ul>
+            <div class="clearfix"></div>
+            <a class="order" href="#">提交订单</a>
+            <!--取消购物-->
+            <div class="total-item">
+                <h3>您还可以</h3>
+                <h4>全部取消</h4>
+                &emsp;&emsp;&emsp;&nbsp;
+                <a class="cpns" href="#empty">清空购物车</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-top-at">
+            <div class="col-md-6 amet-sed">
+                <h4>more information</h4>
+                <ul class="nav-bottom">
+                    <li><a href="#">How to order</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 amet-sed ">
+                <h4><a href="#" data-toggle="modal" data-target="#about" id="about-us">About us</a></h4>
+
+                <p></p>
+
+                <p></p>
+                <ul class="social">
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i class="twitter"> </i></a></li>
+                    <li><a href="#"><i class="rss"> </i></a></li>
+                    <li><a href="#"><i class="gmail"> </i></a></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+//        删除单件商品
+        $('.close span').on('click', function () {
+            $(this).parent().fadeOut('slow', function () {
+                $(this).parent().remove();
+                var num = $('.cart-header').length;
+                $('.check h1').html('我的购物车 (' + num + ')');
+                if(!num) {
+                    $('.total_price span').html('0.00');
+                    $('.total1:even').html('0.00');
+                    $('.total1:odd').html('---');
+                    $('#empty').removeClass('hide');
+                }
+            });
+        });
+//        清空购物车
+        $('.cpns').on('click', function () {
+            if(confirm('waring: 您将清空购物车!')) {
+                $('#item-lists :first-child~div').remove();
+                $('.check h1').html('我的购物车 (0)');
+                $('.total_price span').html('0.00');
+                $('.total1:even').html('0.00');
+                $('.total1:odd').html('---');
+                $('#empty').removeClass('hide');
+            }
+        })
+    });
+</script>
+</body>
+</html>
+			
