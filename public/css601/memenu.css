@@ -133,7 +133,10 @@ skyblue .mepanel img:hover,.skyblue form.contact input[type="text"]:focus,.skybl
 	background:#D61F85;
 	color: #ffffff;
 }
-
+.skyblue li a.color5:hover{
+    /*background:#D61F85;*/
+    color: orangered;
+}
 .skyblue li a.color6:hover{
 	background:#00677C;
 	color: #ffffff;
