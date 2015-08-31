@@ -320,8 +320,17 @@ height: 35px;
 .grid-top p a:hover{
 	  color: #EF5F21;
 }
+/*.grid-top img{*/
+    /*width: 255px;*/
+    /*height: 255px;*/
+/*}*/
 .grid-in {
   padding: 2em 0 0;
+}
+.grid-in:after{
+    content:'';
+    display: table;
+    clear:both;
 }
 /*--//content-top--*/
 /*---content-middle--*/
@@ -410,16 +419,17 @@ height: 35px;
 	visibility: hidden;
 	font-size:1.1em;
 	font-weight:700;
+    height: 100%;
 }
 .b-animate img{
 	margin-top: 4%;
 	display: -webkit-inline-box;
 }
+
 .b-animate span{
 	display:block;
 	font-size: 2em;
-	padding-top: 5em;
-	display: block;
+	padding-top: 30%;
 	font-weight: 500;
 }
 
@@ -891,7 +901,7 @@ ul.kid-menu li,.menu ul li{
 	list-style: none;	
 }
 .sellers {
-  padding: 2em 0;
+  /*padding: 2em 0;*/
 }
 .tags {
   padding: 1.5em 0 0;
@@ -914,6 +924,7 @@ h3.best {
   min-height: 45px;
   display: block;
   background-size: cover;
+  margin-bottom: 20px;
 }
 .fit-top{
 	
@@ -1789,7 +1800,7 @@ ul.qty li p{
   min-height: 492px;
 }
 .b-animate span {
-  padding-top: 4em;
+  padding-top: 10%;
 }
 .b-from-left {
   min-height: 288px;
@@ -2035,7 +2046,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .grid-top {
   width: 100%;
-    margin-bottom: 1em;
+  margin: 1em auto;
 }
 .grid-top p {
   font-size: 1.2em;
@@ -2370,4 +2381,9 @@ a.item_add p.number {
 .top-in2 {
   min-height: 81px;
 }
+}
+
+.a-down{
+    display: block;
+    margin-bottom:50px;
 }
