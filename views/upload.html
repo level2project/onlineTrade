@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <title>上传商品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+
+    <link href="/public/css601/style.css" rel="stylesheet" media="all"/>
+    <link href="/public/css601/memenu.css" rel="stylesheet" media="all"/>
+    <link rel="stylesheet" href="/public/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/whole.css">
+
+    <script src="/public/js/jquery-2.1.4.js"></script>
+    <script src="/public/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="/public/js/memenu.js"></script>
+
+    <style>
+        h3{
+            margin-top: 2em;
+            margin-bottom: 0;
+        }
+        h3.tag{
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <!--<div class="header-top">-->
+    <div class="container">
+        <!--导航栏-->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <!--如果class为container为居中-->
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header" id="coll">
+                    <!--可折叠-->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><span class="glyphicon glyphicon-home"></span></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!--导航栏实际内容-->
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="login.html" id="login-before">请登录</a></li>
+                        <li><a href="register.html" id="register">免费注册</a></li>
+                        <li><a href="" id="log-out" class="hide">退出</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="consumer">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
+                                买家中心 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">已买到的宝贝</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="owner">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="true">
+                                卖家中心 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>上传宝贝</a></li>
+                                <li><a href="#">已卖出的宝贝</a></li>
+                                <li><a href="#">出售中的宝贝</a></li>
+                            </ul>
+                        </li>
+                        <li id="shopping-car">
+                            <a href="checkout.html"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-question-sign"></span> 帮助中心</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--模态框-->
+    <!--外三层不改动,仅设置id,为了让点击事件准确找到模态框-->
+    <div class="modal fade" id="about">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--内三层分别对应标题/内容/按钮-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">关于</h4>
+                </div>
+                <div class="modal-body">
+                    introduce ourselves?
+                </div>
+                <div class="modal-footer">
+                    <!--点击有data-dismiss的按钮,模态框才会消失-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">哦,知道了</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">点我消失</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!--</div>-->
+    <div class="container">
+        <div class="head-top">
+            <form class="navbar-form navbar-left clear-float" role="search" id="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default btn-primary">搜索</button>
+            </form>
+            <div class=" h_menu4">
+                <ul class="memenu skyblue">
+                    <li class="active grid"><a class="color5" href="home.html">Home</a></li>
+                    <li><a class="color1" href="#">服务<span class="caret"></span></a>
+
+                        <div class="mepanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">111</a></li>
+                                            <li><a href="products.html">222</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">333</a></li>
+                                            <li><a href="products.html">444</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Popular</h4>
+                                        <ul>
+                                            <li><a href="products.html">555</a></li>
+                                            <li><a href="products.html">666</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="grid"><a class="color1" href="#">商品<span class="caret"></span></a>
+
+                        <div class="mepanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">111</a></li>
+                                            <li><a href="products.html">222</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            <li><a href="products.html">333</a></li>
+                                            <li><a href="products.html">444</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Popular</h4>
+                                        <ul>
+                                            <li><a href="products.html">555</a></li>
+                                            <li><a href="products.html">666</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--content-->
+<div class="content">
+    <div class="container">
+        <div class="col-md-3" >
+            <div class="sellers">
+                <h3>卖家信息</h3>
+            </div>
+        </div>
+        <div class="col-md-6" >
+            <br><br>
+            商品名称:<input type="text" name="pName"/><br><br>
+            商品价格:<input type="text" name="pPrice"/><br><br>
+            商品数量:<input type="text" name="pNumber"/><br><br>
+            商品描述:<br><textarea  name="pDescribe" style="width: 100%;height: 250px;resize:none;"></textarea><br>
+            <form action="/upload" method="post">
+                <!--<input type="text" name="title"/>-->
+                <p>添加商品图片:</p>
+                <input type="file" name="upload" multiple="multiple"/>
+                <input type="submit" value="提交"/>
+            </form>
+            <br><br><br>
+        </div>
+        <div class="col-md-3" >
+            <div class="sellers">
+                <div class="of-left-in">
+                    <h3 class="tag">设置商品标签</h3>
+                </div>
+                <div class="tags">
+                    <ul>
+                        <li><a href="#">design</a></li>
+                        <li><a href="#">fashion</a></li>
+                        <li><a href="#">lorem</a></li>
+                        <li><a href="#">dress</a></li>
+                        <li><a href="#">fashion</a></li>
+                        <li><a href="#">dress</a></li>
+                        <li><a href="#">design</a></li>
+                        <li><a href="#">dress</a></li>
+                        <li><a href="#">design</a></li>
+                        <li><a href="#">fashion</a></li>
+                        <li><a href="#">lorem</a></li>
+                        <li><a href="#">dress</a></li>
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-top-at">
+            <div class="col-md-6 amet-sed">
+                <h4>more information</h4>
+                <ul class="nav-bottom">
+                    <li><a href="#">How to order</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 amet-sed ">
+                <h4><a href="#" data-toggle="modal" data-target="#about" id="about-us">About us</a></h4>
+
+                <p></p>
+
+                <p></p>
+                <ul class="social">
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i class="twitter"> </i></a></li>
+                    <li><a href="#"><i class="rss"> </i></a></li>
+                    <li><a href="#"><i class="gmail"> </i></a></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
