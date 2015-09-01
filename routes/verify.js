@@ -29,4 +29,10 @@ app.post('/register', function (req, res, next) {
 app.get('/getGoods', function (req, res, next) {
     usingmysql.getGoods(res, next);
 });
+/**
+ * 读取商品详细信息 （响应single.html）
+ */
+app.get('/goodDetail', function (req, res, next) {
+    usingmysql.goodDetail(req,res, next);
+});
 module.exports = app;
