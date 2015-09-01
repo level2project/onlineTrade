@@ -78,4 +78,14 @@ function fill(template_id, fill_id) {     //  获取指定元素id模板 填充�
     var template = Handlebars.compile(source);
     var result = template(arguments[2]);           //将数据 填充到模板
     $("#" + fill_id).before(result);//整个模块显示的地方
-}
+};
+
+/**
+ * 跳转到商品详细页
+ */
+$('#goods').on('click','div',function(event){
+    var event = event || window.event;
+    event. stopPropagation();
+    event.preventDefault();
+    window.open('single.html?good='+$(this.childNodes[1]).html(),'_self');
+});

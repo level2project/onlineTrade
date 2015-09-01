@@ -7,9 +7,10 @@ var url = require('url')
 var crypto = require('crypto');
 var $conf = require('../db/conf');             //ridiculous!!!
 var $sql = {               //数据库的操作
-    queryByNamePassword: 'select * from user where username=? and password=? ',
-    register: ' insert into user(username,password,email) values(?,?,?);',
-    getGoods: ' select pname,ptext,picture1 from product'
+    queryByNamePassword: 'select * from user where username=? and password=?',
+    register: 'insert into user(username,password,email) values(?,?,?);',
+    getGoods: 'select pid,pname,ptext,picture1 from product',
+    goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -60,7 +61,7 @@ module.exports = {
         password = md5(password);
         pool.getConnection(function (err, connection) {
             if (!err) {
-                connection.query($sql.register, [userName, password,email], function (err, result) {
+                connection.query($sql.register, [userName, password, email], function (err, result) {
                     if (!err) {
                         res.end('注册成功');
                     } else {  //如果出错了 是帐号已被注册
@@ -79,12 +80,29 @@ module.exports = {
                     if (!err) {
                         res.end(JSON.stringify(result));
                     } else {  //如果出错了 是帐号已被注册
-                        res.end('database error '+err);
+                        res.end('database error ' + err);
                     }
                     connection.release();
                 });
             }
-            else res.end('database error '+err)
+            else res.end('database error ' + err)
+        });
+    },
+    goodDetail: function (req, res, next) {
+        var para = url.parse(req.url,true);
+        var num = para.query.pid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.goodDetail, [num], function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {
+                        res.end('database error ' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err)
         });
     }
 };
