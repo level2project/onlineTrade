@@ -20,4 +20,7 @@ app.get('/single.html', function (req, res) {
 app.get('/checkout.html', function (req, res) {
     res.render('checkout');
 });
+app.get('/upload.html', function (req, res) {
+    res.render('upload');
+});
 module.exports = app;
