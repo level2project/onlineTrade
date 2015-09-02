@@ -37,7 +37,6 @@ $.get('/verify/goodDetail', {pid: a.search.substr(6)}, function (text, status) {
         $('#picture2').attr('src', Data.picture2).parent().attr('data-thumb', Data.picture2);
         $('.flex-control-nav :eq(1)>img').attr('src', $('#picture2').attr('src'));
     }
-
     if (Data.picture3) {
         $('#picture3').attr('src', Data.picture3).parent().attr('data-thumb', Data.picture3);
         $('.flex-control-nav :eq(2)>img').attr('src', $('#picture3').attr('src'));
