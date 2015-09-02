@@ -55,6 +55,15 @@ h3{
     background: #0099ff;
 }
 
+#pCount{
+    width: 30px;
+    text-align: right;
+}
+#pCount~span{
+    font-size: 12px;
+    color: grey;
+}
+
 #about-us:hover{
     text-decoration: none;
     color: orangered;
