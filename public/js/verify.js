@@ -9,11 +9,12 @@ $('#loginBtn').on('click', function (event) {
         return;
     }
     $.post('/verify', data, function (text, status) {
-        if (JSON.stringify(text) === '"登录成功"') {
-            document.cookie = 'userName=' + (/=.+&/.exec(data)).toString().slice(1,-1);
-            location.href='/';
+        if (/登录成功/.test(JSON.stringify(text))) {
+            document.cookie = 'userName=' + (/=.+&/.exec(data)).toString().slice(1, -1);
+            document.cookie = 'id=' + text.substr(4);
+            location.href = '/';
         } else {
-            alert(JSON.stringify(text).slice(1,-1));
+            alert(JSON.stringify(text).slice(1, -1));
         }
     })
     event.preventDefault();//阻止默认行为

@@ -18,9 +18,8 @@ $().ready(function () {
 
         //本来所有需要登录的页面的跳转href都是login.html 全部修改到正常页面
         $('#shopping-car a').attr('href', 'checkout.html');             //购物车的href修正
-        console.log($('#seller *').first().html())
+        //console.log($('#seller *').first().html())
         $('#seller *').first().children(1).attr('href', 'upload.html');         //上传宝贝的href修正
-        //这个地方有个隐性问题 如果前面取出来的是空 比如上传宝贝页是
     }
 
 })
@@ -38,7 +37,8 @@ $('#log-out').on('click', function (event) {
     if (a.pathname !== '/' && a.pathname !== '/home.html' && a.pathname !== '/single.html') {
         //不等于所有不需要登录的页面
         window.location.href = '/home.html';
+        event = event || window.event;
+        event.preventDefault();
     }
-    event = event || window.event;
-    event.preventDefault();
+
 });

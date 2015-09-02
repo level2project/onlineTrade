@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Checkout</title>
+    <title>我的购物车</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -17,23 +17,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="/public/js/memenu.js"></script>
     <script src="/public/js/simpleCart.min.js"></script>
 
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
     <!--fonts-->
     <!--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>-->
     <!--<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>&lt;!&ndash;//fonts&ndash;&gt;
     -->
     <!-- start menu -->
-    <script>$(document).ready(function () {
-        $(".memenu").memenu();
-    });</script>
+    <script>
+        $(document).ready(function () {
+            $(".memenu").memenu();
+        });
+    </script>
     <style>
         a.order {
-            background:#EF5F21;
+            background: #EF5F21;
             padding: 10px 20px;
             font-family: 'Lato', sans-serif;
             font-size: 1em;
@@ -42,21 +46,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             display: block;
             font-weight: 600;
             text-align: center;
-            margin:3em 0 1em 0;
+            margin: 3em 0 1em 0;
         }
-        a.continue:hover{
+
+        a.continue:hover {
             background-color: orangered;
         }
-        a.order:hover{
-            background:orangered;
+
+        a.order:hover {
+            background: orangered;
         }
-        a.cpns{
+
+        a.cpns {
             text-decoration: none;
         }
-        a.cpns:hover{
-            background:orangered;
+
+        a.cpns:hover {
+            background: orangered;
         }
-        .close{
+
+        .close {
             cursor: pointer;
             width: 28px;
             height: 28px;
@@ -70,19 +79,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             -o-transition: color 0.2s ease-in-out;
             transition: color 0.2s ease-in-out;
         }
-        .cart-header{
+
+        .cart-header {
             padding-top: 10px;
             border-radius: 1px;
         }
-        .cart-header:hover{
+
+        .cart-header:hover {
             box-shadow: 0 0 3px 1px orangered;
         }
+
         #empty {
             padding: 88px 0 100px 156px;
             background: url(/public/image/empty-cart.png) 40px 86px no-repeat;
             position: relative;
         }
-        #empty ul{
+
+        #empty ul {
             list-style: none;
         }
     </style>
@@ -356,6 +369,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span class="total1">---</span>
                 <span>运送费用</span>
                 <span class="total1">150.00</span>
+
                 <div class="clearfix"></div>
             </div>
             <!--总价-->
@@ -414,7 +428,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $(this).parent().remove();
                 var num = $('.cart-header').length;
                 $('.check h1').html('我的购物车 (' + num + ')');
-                if(!num) {
+                if (!num) {
                     $('.total_price span').html('0.00');
                     $('.total1:even').html('0.00');
                     $('.total1:odd').html('---');
@@ -424,7 +438,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
 //        清空购物车
         $('.cpns').on('click', function () {
-            if(confirm('waring: 您将清空购物车!')) {
+            if (confirm('waring: 您将清空购物车!')) {
                 $('#item-lists :first-child~div').remove();
                 $('.check h1').html('我的购物车 (0)');
                 $('.total_price span').html('0.00');

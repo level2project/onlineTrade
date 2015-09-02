@@ -10,7 +10,8 @@ var $sql = {               //数据库的操作
     queryByNamePassword: 'select * from user where username=? and password=?',
     register: 'insert into user(username,password,email) values(?,?,?);',
     getGoods: 'select pid,pname,ptext,picture1 from product',
-    goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid'
+    goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
+    addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,introduction) values(?,?,?,?,?,?,?)'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -36,8 +37,8 @@ module.exports = {
                             console.log('帐号或密码错误')
                             res.end('帐号或密码错误');
                         } else {
-                            console.log('帐号验证成功');
-                            res.end('登录成功');
+                            console.log('用户：' + result[0].uid + result[0].username + '帐号验证成功')
+                            res.end('登录成功' + result[0].uid);
                         }
                     } else {
                         res.end('database error 2');
@@ -89,7 +90,7 @@ module.exports = {
         });
     },
     goodDetail: function (req, res, next) {
-        var para = url.parse(req.url,true);
+        var para = url.parse(req.url, true);
         var num = para.query.pid;
         pool.getConnection(function (err, connection) {
             if (!err) {
@@ -103,6 +104,30 @@ module.exports = {
                 });
             }
             else res.end('database error ' + err)
+        });
+    },
+    addGood: function (req, res, next) {
+        var query = url.parse('?' + req.toString(), true).query;
+        var sellerid = query.sellerid,
+            pname = query.pname,
+            ptext = query.ptext,
+            price = query.price,
+            amount = query.amount,
+            picture1 = query.picture1,
+            introduction = query.introduction;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.addGood, [sellerid, pname, ptext, price, amount, picture1, introduction], function (err, result) {
+                    if (!err) {
+                        res.end('添加成功');
+                    } else {  //如果出错了 是?
+                        console.log(err);
+                        res.end('添加失败？？？');
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error')
         });
     }
 };
