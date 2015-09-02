@@ -9,30 +9,6 @@ $(document).ready(function () {
 });
 
 /**
- * 如果已经登录过了
- */
-$().ready(function () {
-    var alreadyLogin = document.cookie;
-    if (alreadyLogin.indexOf('userName=') != -1) {
-        var name = '';
-        for (i = alreadyLogin.indexOf('userName=') + 9; i < alreadyLogin.length && alreadyLogin[i] != ';'; i++) {
-            name += alreadyLogin[i];
-        }
-        $('#login-before').html('welcome, ' + decodeURI(name));
-        $('#login-before').attr('href', '')
-        $('#register').hide();
-        $('#log-out').removeClass('hide');
-    }
-})
-//退出登录 删除登录状态
-$('#log-out').on('click', function () {
-    //删除cookie
-    var date = new Date();
-    date.setTime(date.getTime() - 10);
-    document.cookie = 'userName=abc;expires=' + date.toGMTString();
-});
-
-/**
  * 从locantion中获取商品的pid
  */
 var a = document.createElement('a')
