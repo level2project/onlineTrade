@@ -28,12 +28,21 @@ $.get('/verify/goodDetail', {pid: a.search.substr(6)}, function (text, status) {
         $('#price').html('￥' + Data.price);
     if (Data.introduction)
         $('#introduction').html(Data.introduction);
-    if (Data.picture1)
+    if (Data.picture1) {
         $('#picture1').attr('src', Data.picture1).parent().attr('data-thumb', Data.picture1);
-    if (Data.picture2)
+        $('.flex-control-nav :eq(0)>img').attr('src', $('#picture1').attr('src'));
+    }
+
+    if (Data.picture2) {
         $('#picture2').attr('src', Data.picture2).parent().attr('data-thumb', Data.picture2);
-    if (Data.picture3)
+        $('.flex-control-nav :eq(1)>img').attr('src', $('#picture2').attr('src'));
+    }
+
+    if (Data.picture3) {
         $('#picture3').attr('src', Data.picture3).parent().attr('data-thumb', Data.picture3);
+        $('.flex-control-nav :eq(2)>img').attr('src', $('#picture3').attr('src'));
+    }
+
 
     //下面添加商品的额外信息  后面要考虑重构。。。（未实现。。）
     if (Data.soldamount)
@@ -45,3 +54,10 @@ $.get('/verify/goodDetail', {pid: a.search.substr(6)}, function (text, status) {
 
 });
 
+$('.review a').on('click', function () {
+    $('.cd-tabs-navigation li>a').removeClass('selected');
+    $('.cd-tabs-content li').removeClass('selected');
+    $('#review').addClass('selected');
+    console.log($('.cd-tabs-content>li:last').html());
+    $('.cd-tabs-content>li:last').addClass('selected');
+})

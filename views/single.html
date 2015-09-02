@@ -30,7 +30,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $(window).load(function () {
             $('.flexslider').flexslider({
                 animation: "slide",
-                controlNav: "thumbnails"
+                controlNav: "thumbnails",
+                pauseOnHover: true,
+                keyboard: false,
+                slideshowSpeed: 2000
             });
         });
     </script>
@@ -316,7 +319,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#"><i> </i></a></li>
                 </ul>
                 <div class="review">
-                    <a href="#review"> ----- </a>
+                    <a href="#review"> 已有 1 人评论 </a>
 
                 </div>
                 <div class="clearfix"></div>
@@ -325,8 +328,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h5 class="item_price" id="price">价格</h5>
 
             <p id="ptext">comment comment </p>
-            数量:<input value="1">
-            <br><br><br><br><br>
+            <br><br>
+            数量:<input value="1" id="pCount">
+            <span>(还剩 999 件)</span>
+            <br><br><br>
             <a href="#" class="btn btn-default btn-warning btn-lg btn-block" role="button">ADD TO CART</a>
 
         </div>

@@ -38,7 +38,8 @@ $('#log-out').on('click', function (event) {
     if (a.pathname !== '/' && a.pathname !== '/home.html' && a.pathname !== '/single.html') {
         //不等于所有不需要登录的页面
         window.location.href = '/home.html';
+        event = event || window.event;
+        event.preventDefault();
     }
-    event = event || window.event;
-    event.preventDefault();
+
 });
