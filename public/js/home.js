@@ -39,7 +39,7 @@ $().ready(function () {
             name += alreadyLogin[i];
         }
         $('#login-before').html('welcome, ' + decodeURI(name));
-        $('#login-before').attr('href', '')
+        $('#login-before').attr('href', '#')
         $('#register').hide();
         $('#log-out').removeClass('hide');
     }
