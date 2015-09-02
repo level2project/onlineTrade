@@ -71,6 +71,12 @@ $.get('/verify/getGoods', function (text, status) {
             $(temp[i]).next().children(1).attr('src', $(temp[i]).html());
         }
     }
+    var w = $('#goods img').width();
+    $('#goods img').height(w);
+});
+window.addEventListener('resize', function () {
+    var w = $('#goods img').width();
+    $('#goods img').height(w);
 });
 function fill(template_id, fill_id) {     //  获取指定元素id模板 填充数据data后 插回到到id前
     var source = $("#" + template_id).html();                 //取得模板
