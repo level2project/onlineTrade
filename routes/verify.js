@@ -9,6 +9,7 @@ var usingmysql = require('../handlers/db/usingmysql');
 
 /**
  * 响应登录
+ * 返回 帐号或密码错误/ 登录成功（以及用户uid）
  */
 app.post('/', function (req, res, next) {
     req.on('data', function (data) {
@@ -34,5 +35,13 @@ app.get('/getGoods', function (req, res, next) {
  */
 app.get('/goodDetail', function (req, res, next) {
     usingmysql.goodDetail(req,res, next);
+});
+/**
+ * 添加商品
+ */
+app.post('/addGood', function (req, res, next) {
+    req.on('data', function (data) {
+        usingmysql.addGood(data, res, next);
+    })
 });
 module.exports = app;

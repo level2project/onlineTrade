@@ -13,12 +13,12 @@ $(document).ready(function () {
  */
 var a = document.createElement('a')
 a.setAttribute('href', window.location.href);
-console.log((a.search.substr(6)));
+//console.log((a.search.substr(6)));
 /**
  * 请求、渲染对应商品信息
  */
 $.get('/verify/goodDetail', {pid: a.search.substr(6)}, function (text, status) {
-    console.log(text);
+    //console.log(text);
     var Data = JSON.parse(text)[0];
     if (Data.pname)
         $('#pname').html(Data.pname);
