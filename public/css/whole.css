@@ -31,3 +31,29 @@ body::-webkit-scrollbar {
     color: orangered;
 }
 /*footer end*/
+
+@media (max-width: 1280px) {
+    #search input{
+        width: 500px;
+    }
+}
+@media (max-width: 1024px) {
+    #search input{
+        width: 300px;
+    }
+}
+@media (max-width: 768px) {
+    #search{
+        display: none;
+    }
+}
+@media (max-width: 640px) {
+    #search{
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    #search{
+        display: none;
+    }
+}

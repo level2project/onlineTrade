@@ -35,6 +35,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 keyboard: false,
                 slideshowSpeed: 2000
             });
+            $('a[tabindex]').on('click', function () {
+                var alreadyLogin = document.cookie;
+                if (alreadyLogin.indexOf('userName=') == -1) {
+                    if(confirm('请先登录')) {
+                        window.location.href = 'login.html';
+                    } else {
+                        $('a[tabindex]').popover('hide');
+                    }
+                } else {
+                    $('a[tabindex]').popover({
+                        animation: true,
+                        delay: { "show": 200, "hide": 100 },
+                        html: true
+                    });
+                }
+            });
+
         });
     </script>
 </head>
@@ -332,8 +349,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             数量:<input value="1" id="pCount">
             <span>(还剩 999 件)</span>
             <br><br><br>
-            <a href="#" class="btn btn-default btn-warning btn-lg btn-block" role="button">ADD TO CART</a>
-
+            <a tabindex="0" class="btn btn-default btn-warning btn-lg btn-block" role="button"
+               data-toggle="popover" data-trigger="focus" title="成功添加到购物车" data-placement="bottom"
+               data-content="
+                   <div style='text-align: center;'><img src='/public/image/sc1.jpg' width='50px' height='50px'></div>
+                   <div>
+                       您可以:<br>
+                       <ol>
+                           <li><a href=''>继续购物</a></li>
+                           <li><a href='checkout.html'>查看购物车</a></li>
+                       </ol>
+                   </div>
+                    ">ADD TO CART</a>
         </div>
     </div>
     <div class="clearfix"></div>
