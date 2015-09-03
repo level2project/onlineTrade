@@ -11,7 +11,7 @@ var $sql = {               //数据库的操作
     register: 'insert into user(username,password,email) values(?,?,?);',
     getGoods: 'select pid,pname,ptext,picture1 from product',
     goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
-    addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,introduction) values(?,?,?,?,?,?,?)'
+    addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -114,10 +114,12 @@ module.exports = {
             price = query.price,
             amount = query.amount,
             picture1 = query.picture1,
+            picture2 = query.picture2,
+            picture3 = query.picture3,
             introduction = query.introduction;
         pool.getConnection(function (err, connection) {
             if (!err) {
-                connection.query($sql.addGood, [sellerid, pname, ptext, price, amount, picture1, introduction], function (err, result) {
+                connection.query($sql.addGood, [sellerid, pname, ptext, price, amount, picture1,picture2,picture3, introduction], function (err, result) {
                     if (!err) {
                         res.end('添加成功');
                     } else {  //如果出错了 是?
