@@ -46,7 +46,10 @@ h1,h2,h3,h4,h5,h6,label,p{
 }	
 a.item_add {
  text-decoration: none;
-}		
+}
+a.item_add:hover{
+    text-decoration: none;
+}
 .grid_1 img{
 	margin-bottom:1em;
 }
@@ -949,6 +952,8 @@ a.shop-now{
 a.shop-now:hover{
 	  border: 1px solid #EF5F21;
 	  background:#EF5F21;
+    color: #ffffff;
+    text-decoration: none;
 }
 h3.tag {
 	color: #000;
@@ -1030,7 +1035,7 @@ a.item_add p.number{
   padding: 0.5em 1em;
 }
 a.item_add p.number:hover{
-		background: #000;
+		background: orangered;
 		transition: 0.5s all;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
@@ -1220,8 +1225,11 @@ h3.real{
 	  font-family: 'Lato', serif;
 	text-decoration: none;
 }
-
+.cd-tabs-navigation a:hover {
+    text-decoration: none;
+}
 .cd-tabs-navigation a.selected  {
+    text-decoration: none;
 	background:#EF5F21;
   color:#fff;
 }
@@ -1304,8 +1312,9 @@ a.add-re{
   display: inline-block;
 }
 a.add-re:hover{
-	
-  background: #000;
+    color: #ffffff;
+	text-decoration: none;
+  background: orangered;
   }
 .top-comment-right h6 a{
 	color:#000;
