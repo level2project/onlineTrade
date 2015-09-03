@@ -9,6 +9,7 @@ var $conf = require('../db/conf');             //ridiculous!!!
 var $sql = {               //数据库的操作
     queryByNamePassword: 'select * from user where username=? and password=?',
     register: 'insert into user(username,password,email) values(?,?,?);',
+    askForUid: 'select uid from user where username=?',
     getGoods: 'select pid,pname,ptext,picture1 from product',
     goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)'
@@ -63,15 +64,21 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.register, [userName, password, email], function (err, result) {
-                    if (!err) {
-                        res.end('注册成功');
+                    if (!err) {//注册成功了 再查询返回用户的uid以备使用
+                        connection.query($sql.askForUid, [userName], function (err, result) {
+                            if (!err) {
+                                res.end('注册成功'+JSON.stringify(result));
+                            } else {
+                                res.end('database error');//一般不会有这个问题
+                            }
+                        })
                     } else {  //如果出错了 是帐号已被注册
                         res.end('该帐号已被注册');
                     }
                     connection.release();
                 });
             }
-            else res.end('database error')
+            else res.end('database error');
         });
     },
     getGoods: function (res, next) {
@@ -119,7 +126,7 @@ module.exports = {
             introduction = query.introduction;
         pool.getConnection(function (err, connection) {
             if (!err) {
-                connection.query($sql.addGood, [sellerid, pname, ptext, price, amount, picture1,picture2,picture3, introduction], function (err, result) {
+                connection.query($sql.addGood, [sellerid, pname, ptext, price, amount, picture1, picture2, picture3, introduction], function (err, result) {
                     if (!err) {
                         res.end('添加成功');
                     } else {  //如果出错了 是?

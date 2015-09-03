@@ -11,7 +11,7 @@ $('#loginBtn').on('click', function (event) {
     $.post('/verify', data, function (text, status) {
         if (/登录成功/.test(JSON.stringify(text))) {
             document.cookie = 'userName=' + (/=.+&/.exec(data)).toString().slice(1, -1);
-            document.cookie = 'id=' + text.substr(4);
+            document.cookie = 'id=' + text.substr(4); //id是跟在 登录成功 后面的 所以参数是4
             location.href = '/';
         } else {
             alert(JSON.stringify(text).slice(1, -1));

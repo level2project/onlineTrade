@@ -68,3 +68,7 @@ h3{
     text-decoration: none;
     color: orangered;
 }
+
+.fixed-height{
+    height: 303px!important;
+}

@@ -10,18 +10,20 @@ $('#registerBtn').on('click', function (event) {
         alert("帐号或密码不能为空");
         return;
     }
-    if(!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test($('#email').val()))){
+    if (!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test($('#email').val()))) {
         event.preventDefault();//阻止默认行为
         alert('请输入正确的邮箱');
         return;
     }
     $.post('/verify/register', data, function (text, status) {
-        if (JSON.stringify(text) === '"注册成功"') {
+        //alert(text);  //成功返回这么一个东西 注册成功[{"uid":9999}]
+        if (/注册成功/.test(JSON.stringify(text))) {
             //userName=22333&email=admin&password=admin
-            document.cookie = 'userName=' + (/=.+?&/.exec(data)).toString().slice(1,-1);
-            location.href='/';
+            document.cookie = 'userName=' + (/=.+?&/.exec(data)).toString().slice(1, -1);
+            document.cookie = 'id=' + JSON.parse(text.substr(4))[0]['uid'];
+            location.href = '/';
         } else {
-            alert(JSON.stringify(text).slice(1,-1));
+            alert(JSON.stringify(text).slice(1, -1));
         }
     })
     event.preventDefault();//阻止默认行为

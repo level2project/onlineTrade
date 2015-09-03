@@ -29,11 +29,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         // Can also be used with $(document).ready()
         $(window).load(function () {
             $('.flexslider').flexslider({
-                animation: "slide",
-                controlNav: "thumbnails",
+                animation: "fade",
+                //controlNav: "thumbnails",
                 pauseOnHover: true,
                 keyboard: false,
-                slideshowSpeed: 2000
+                slideshowSpeed: 2500,
+                mousewheel: true
             });
             $('a[tabindex]').on('click', function () {
                 var alreadyLogin = document.cookie;
@@ -311,13 +312,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="flexslider">
             <ul class="slides">
                 <li data-thumb="">
-                    <img id="picture1" src=""/>
+                    <img class="fixed-height" id="picture1" src=""/>
                 </li>
                 <li data-thumb="">
-                    <img id="picture2" src=""/>
+                    <img class="fixed-height" id="picture2" src=""/>
                 </li>
                 <li data-thumb="">
-                    <img id="picture3" src=""/>
+                    <img class="fixed-height" id="picture3" src=""/>
                 </li>
             </ul>
         </div>
