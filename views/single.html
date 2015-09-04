@@ -24,55 +24,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="/public/js/handlebars-v3.0.3.js"></script>
     <!-- FlexSlider -->
     <script defer src="/public/js/jquery.flexslider.js"></script>
-    <script>
-        // Can also be used with $(document).ready()
-        $(window).load(function () {
-            var flag = true;
-            $('.flexslider').flexslider({
-                animation: "fade",
-                controlNav: "thumbnails",
-                pauseOnHover: true,
-                keyboard: false,
-                slideshowSpeed: 25000,
-                mousewheel: true
-            });
-            $('a[tabindex]').on('click', function () {
-                var alreadyLogin = document.cookie;
-                if (alreadyLogin.indexOf('userName=') == -1) {
-                    if(confirm('请先登录')) {
-                        window.location.href = 'login.html';
-                    } else {
-                        $('a[tabindex]').popover('hide');
-                    }
-                } else {
-                    $('a[tabindex]').popover({
-                        animation: true,
-                        delay: { "show": 200, "hide": 100 },
-                        html: true
-                    });
-                    if(flag) {
-                        $('a[tabindex]').popover('show');
-                        flag = false;
-                    }
-
-                }
-            });
-//            for(var i = 1; i < $('ol.flex-control-nav img').length; i++) {
-//                console.log(i+': '+$('ol.flex-control-nav img')[i].getAttribute('src'));
-//                console.log(i+': '+$('ol.flex-control-nav img')[i].nodeName);
-//                if($('ol.flex-control-nav img')[i].getAttribute('src') == '') {
-//                    console.log('del i='+i);
-//                    $('ol.flex-control-nav img')[i].parentNode.remove();
-//                    console.log('now length='+$('ol.flex-control-nav img').length);
-//                }
-//            }
-//            if($('ol.flex-control-nav img')[$('ol.flex-control-nav img').length-1].getAttribute('src') == '') {
-//                console.log('del i='+($('ol.flex-control-nav img').length-1));
-//                $('ol.flex-control-nav img')[$('ol.flex-control-nav img').length-1].parentNode.remove();
-//                console.log('now length='+$('ol.flex-control-nav img').length);
-//            }
-        });
-    </script>
 </head>
 <body>
 <!--header-->
@@ -330,13 +281,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="flexslider">
             <ul class="slides">
                 <li data-thumb="">
-                    <img class="fixed-height" id="picture1" src=""/>
+                    <img class="fixed-height" id="picture1">
                 </li>
                 <li data-thumb="">
-                    <img class="fixed-height" id="picture2" src=""/>
+                    <img class="fixed-height" id="picture2">
                 </li>
                 <li data-thumb="">
-                    <img class="fixed-height" id="picture3" src=""/>
+                    <img class="fixed-height" id="picture3">
                 </li>
             </ul>
         </div>
@@ -366,10 +317,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <p id="ptext">comment comment </p>
             <br><br>
             数量:<input value="1" id="pCount">
-            <span>(还剩 999 件)</span>
+            <span id="rest">(还剩 999 件)</span>
             <br><br><br>
             <a tabindex="0" class="btn btn-default btn-warning btn-lg btn-block" role="button"
-               data-toggle="popover" data-trigger="focus" title="成功添加到购物车" data-placement="bottom"
+               data-toggle="popover" data-trigger="focus" title="添加到购物车" data-placement="bottom"
                data-content="
                    <div style='text-align: center;'><img src='/public/image/sc1.jpg' width='50px' height='50px'></div>
                    <div>
@@ -403,18 +354,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <li data-content="cinema">
                 <div class="facts1">
                     <div class="color">
-                        <p>剩余数量</p>
-                        <span id="rest">somthing</span>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="color">
                         <p>类型</p>
                         <span id="pcstyle">somthing</span>
+
                         <div class="clearfix"></div>
                     </div>
                     <div class="color">
                         <p>商品类型/服务</p>
                         <span id="good-type">somthing</span>
+
                         <div class="clearfix"></div>
                     </div>
                 </div>
