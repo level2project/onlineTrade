@@ -62,7 +62,7 @@ $.get('/verify/getGoods', function (text, status) {
         fill("good-template", "fill-good", obj);  // 参数为模板id 最终加入DOM结构ID 需添加的数据
     });
     /**
-     * 处理图片
+     * 处理图片 对应div>div（隐藏）已经填补了图片的地址 直接往img标签 div下个标（a标签）的第一个子标签 添加src
      */
     var temp = $('#goods>div>div');
     for (var i = 0; i < temp.length; i++) {
@@ -87,7 +87,7 @@ function fill(template_id, fill_id) {     //  获取指定元素id模板 填充�
 };
 
 /**
- * 跳转到商品详细页
+ * 跳转到商品详细页  在对应div内有一个包含商品pid的p标签 直接通过它判断是哪件商品
  */
 $('#goods').on('click','div',function(event){
     var event = event || window.event;

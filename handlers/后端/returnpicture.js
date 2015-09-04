@@ -6,7 +6,7 @@ var fs = require('fs');
 var url = require('url');
 //直接进入index.html 参数 进行路由转换
 var server = http.createServer(function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader("Access-Control-Allow-Origin","*");   
     var path = url.parse(req.url, true);
     var whatKind = path.pathname.match(/\.\w+$/);
     switch ('.' + whatKind) {
