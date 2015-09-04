@@ -12,13 +12,41 @@ var $sql = {               //数据库的操作
     askForUid: 'select uid from user where username=?',
     getGoods: 'select pid,pname,ptext,picture1 from product',
     goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
+    getAllPid: 'select pid from product',//获取当前所存在的所有pid用于随机抽取3件
+    threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
+/**
+ * md5加密
+ * @param text{string}  加密的字符串
+ * @returns {string} 加密完成的字符串
+ */
 function md5(text) {                                   //md5加密
     return crypto.createHash('md5').update(text).digest('hex');
     // Encode each byte as two hexadecimal characters
+}
+/**
+ * 随机产生3个不重复的 不大于max的数字 数组   随机性待优化
+ * 并且需要确保 所选出的数字x  result[x]['pid']不等于num
+ * @param max
+ */
+function threeRandomNotRepeat(result, num, max) {
+    var rand = [];
+    rand[0] = Math.round(Math.random() * max);
+    while (result[rand[0]]['pid'] == num) {
+        rand[0] = Math.round(Math.random() * max);
+    }
+    rand[1] = Math.round(Math.random() * max);
+    while (rand[1] === rand[0] || result[rand[1]]['pid'] == num) {
+        rand[1] = Math.round(Math.random() * max);
+    }
+    rand[2] = Math.round(Math.random() * max);
+    while (rand[2] === rand[0] || rand[2] === rand[1] || result[rand[2]]['pid'] == num) {
+        rand[2] = Math.round(Math.random() * max);
+    }
+    return rand;
 }
 module.exports = {
     verifyByNamePassword: function (req, res, next) {
@@ -111,8 +139,36 @@ module.exports = {
                     connection.release();
                 });
             }
-            else res.end('database error ' + err)
+            else res.end('database error ' + err);
         });
+    },
+    threeRandomGood: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var num = para.query.pid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.getAllPid, function (err, result) {
+                    if (!err) {
+                        //这里的result是这样的东西[ { pid: 39 }, { pid: 40 }, { pid: 41 }, { pid: 42 }, { pid: 43 } ]
+                        //下面随机抽取3个 请求所需数据
+                        var rand = threeRandomNotRepeat(result, num, result.length - 1);
+                        //console.log([result[rand[0]]['pid'] + ' ' + result[rand[1]]['pid'] + ' ' + result[rand[2]]['pid']])
+                        connection.query($sql.threeRandomGood, [result[rand[0]]['pid'], result[rand[1]]['pid'], result[rand[2]]['pid']], function (err, result) {
+                            if (!err) {
+                                res.end(JSON.stringify(result));
+                            }
+                            else {
+                                res.end('database error ' + err);
+                            }
+                        })
+                    } else {
+                        res.end('database error' + err)
+                    }
+                    connection.release();
+                })
+            }
+            else res.end('database error ' + err);
+        })
     },
     addGood: function (req, res, next) {
         var query = url.parse('?' + req.toString(), true).query;
