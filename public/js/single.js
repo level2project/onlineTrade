@@ -8,11 +8,12 @@ $(document).ready(function () {
     $(".memenu").memenu();
 });
 
-
+var rest = null;
 // Can also be used with $(document).ready()
 $(window).load(function () {
     var flag = true;
-
+    $('div.fixW>span').first().addClass('not-allow');
+    $('div.fixW>span').last().addClass('allow');
     $('a[tabindex]').on('click', function () {
         var alreadyLogin = document.cookie;
         if (alreadyLogin.indexOf('userName=') == -1) {
@@ -88,7 +89,7 @@ $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
         controlNav: "thumbnails",
         pauseOnHover: true,
         keyboard: false,
-        slideshowSpeed: 25000,
+        slideshowSpeed: 2500,
         mousewheel: true
     });
 
@@ -111,6 +112,66 @@ $('.review a').on('click', function () {
     $('.cd-tabs-content>li:last').addClass('selected');
 });
 
+
+$('div.fixW>span:first').on('click', function () {
+    var val = $('#pCount').val();
+    if(val <= 2) {
+        $('#pCount').val(1);
+        $('#pCount').trigger('change');
+        $('div.fixW>span').first().removeClass('allow');
+        $('div.fixW>span').first().addClass('not-allow');
+        $('div.fixW>span').last().removeClass('not-allow');
+        $('div.fixW>span').last().addClass('allow');
+        return;
+    }
+    val--;
+    $('#pCount').val(val);
+    $('#pCount').trigger('change');
+});
+$('div.fixW>span:last').on('click', function () {
+    rest = $('#rest').text().substring(4);
+    var len = rest.length - 3;
+    rest = rest.substr(0,len);
+    var val = $('#pCount').val();
+    if(val >= +rest - 1) {
+        $('#pCount').val(rest);
+        $('#pCount').trigger('change');
+        $('div.fixW>span').first().removeClass('not-allow');
+        $('div.fixW>span').first().addClass('allow');
+        $('div.fixW>span').last().removeClass('allow');
+        $('div.fixW>span').last().addClass('not-allow');
+        return;
+    }
+    val++;
+    $('#pCount').val(val);
+    $('#pCount').trigger('change');
+});
+$('#pCount').on('change', function () {
+    rest = $('#rest').text().substring(4);
+    var len = rest.length - 3;
+    rest = rest.substr(0,len);
+    var val = $('#pCount').val();
+    if(val <= 1) {
+        $('#pCount').val(1);
+        $('div.fixW>span').first().removeClass('allow');
+        $('div.fixW>span').first().addClass('not-allow');
+        $('div.fixW>span').last().removeClass('not-allow');
+        $('div.fixW>span').last().addClass('allow');
+    } else if(val > 1 && val < +rest) {
+        $('div.fixW>span').first().removeClass('not-allow');
+        $('div.fixW>span').first().addClass('allow');
+        $('div.fixW>span').last().removeClass('not-allow');
+        $('div.fixW>span').last().addClass('allow');
+    } else if(val >= +rest) {
+        $('#pCount').val(rest);
+        $('div.fixW>span').first().removeClass('not-allow');
+        $('div.fixW>span').first().addClass('allow');
+        $('div.fixW>span').last().removeClass('allow');
+        $('div.fixW>span').last().addClass('not-allow');
+    }
+});
+
+
 //在下面的三个 其他商品 随机抽取3个商品显示   传递一个pid过去 确保下面三个与当前不同
 $.get('/verify/threeRandomGood?pid=' + pid, function (text, status) {
     var Data = JSON.parse(text);
@@ -125,4 +186,3 @@ function fill(template_id, fill_id) {     //  获取指定元素id模板 填充�
     var result = template(arguments[2]);           //将数据 填充到模板
     $("#" + fill_id).before(result);//整个模块显示的地方
 };
-

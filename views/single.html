@@ -316,8 +316,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <p id="ptext">comment comment </p>
             <br><br>
-            数量:<input value="1" id="pCount">
-            <span id="rest">(还剩 999 件)</span>
+            <div class="fixed-align">
+                <span class="fixW mkdown">数量:</span>
+                <div class="input-group fixW">
+                    <span class="input-group-addon glyphicon glyphicon-minus"></span>
+                    <input value="1" id="pCount" class="form-control">
+                    <span class="input-group-addon glyphicon glyphicon-plus"></span>
+                </div>
+                <span id="rest" class="mkdown letdowm">(还剩 999 件)</span>
+                <div class="clearfix"></div>
+            </div>
             <br><br><br>
             <a tabindex="0" class="btn btn-default btn-warning btn-lg btn-block" role="button"
                data-toggle="popover" data-trigger="focus" title="添加到购物车" data-placement="bottom"
