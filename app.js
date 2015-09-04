@@ -10,6 +10,7 @@ var app = express();
  */
 var index = require('./routes/index');
 var verify = require('./routes/verify');
+
 /* 视图模板配置 */
 //app.set('views', __dirname + '/views');   //jade写法
 //app.set('views engine', 'jade');
@@ -24,8 +25,12 @@ app.use(express.static(path.join(__dirname, '/')));//为了在html中可以直�
 app.use('/', index);
 app.use('/verify', verify);
 
-
-
+//其他未处理路由 返回404页面
+app.get('*', function (req, res) {
+    res.render('error.html', {              //? html可以这么传参数吗？
+        title: 'No Found'
+    })
+})
 /* 端口监听 */
 app.listen(3000, function () {
     console.log("listening on 3000")

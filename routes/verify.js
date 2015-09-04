@@ -8,8 +8,8 @@ var usingmysql = require('../handlers/db/usingmysql');
 
 
 /**
- * 响应登录
- * 返回 帐号或密码错误/ 登录成功（以及用户uid）
+ * 登录(响应login.html)
+ * 返回 帐号或密码错误/ 登录成功(以及用户uid)
  */
 app.post('/', function (req, res, next) {
     req.on('data', function (data) {
@@ -17,7 +17,7 @@ app.post('/', function (req, res, next) {
     })
 });
 /**
- * 注册
+ * 注册(响应register.html)
  */
 app.post('/register', function (req, res, next) {
     req.on('data', function (data) {
@@ -25,23 +25,34 @@ app.post('/register', function (req, res, next) {
     })
 });
 /**
- * 读取商品信息 （响应home.html）
+ * 读取商品信息 (响应home.html)
  */
 app.get('/getGoods', function (req, res, next) {
     usingmysql.getGoods(res, next);
 });
 /**
- * 读取商品详细信息 （响应single.html）
+ * 读取商品详细信息 (响应single.html)
  */
 app.get('/goodDetail', function (req, res, next) {
-    usingmysql.goodDetail(req,res, next);
+    usingmysql.goodDetail(req, res, next);
 });
 /**
- * 添加商品
+ * 随机返回3个商品信息 (放在single.html下方的)
+ * 需要的信息有pid、pname、price、picture1
+ */
+app.get('/threeRandomGood', function (req, res, next) {
+    usingmysql.threeRandomGood(req, res, next);
+});
+/**
+ * 添加商品(响应upload.html)
  */
 app.post('/addGood', function (req, res, next) {
     req.on('data', function (data) {
         usingmysql.addGood(data, res, next);
     })
 });
+/**
+ * 添加商品到购物车
+ */
+//..................................
 module.exports = app;
