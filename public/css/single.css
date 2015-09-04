@@ -56,10 +56,15 @@ h3{
 }
 
 #pCount{
-    width: 30px;
+    width: 40px;
     text-align: right;
+    margin-bottom: -1px;
+    margin-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-#pCount~span{
+
+#rest{
     font-size: 12px;
     color: grey;
 }
@@ -75,4 +80,27 @@ h3{
 .flex-control-thumbs img{
     height: 85px;
     width: 100%;
+}
+
+.fixed-align{
+    position: relative;
+    height: 40px;
+}
+.fixW{
+    width: 60px;
+    float: left;
+}
+.mkdown{
+    padding: 13px 0 0 0;
+}
+.letdowm{
+    position: absolute;
+    bottom: 10px;
+}
+.allow{
+    cursor: pointer;
+}
+.not-allow{
+    color: grey;
+    cursor: not-allowed;
 }
