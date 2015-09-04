@@ -67,7 +67,8 @@ module.exports = {
                     if (!err) {//注册成功了 再查询返回用户的uid以备使用
                         connection.query($sql.askForUid, [userName], function (err, result) {
                             if (!err) {
-                                res.end('注册成功'+JSON.stringify(result));
+                                console.log(userName + '注册成功');
+                                res.end('注册成功' + JSON.stringify(result));
                             } else {
                                 res.end('database error');//一般不会有这个问题
                             }
