@@ -11,94 +11,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="/public/css601/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/public/css/whole.css" rel="stylesheet">
+    <link href="/public/css/checkout.css" rel="stylesheet">
 
     <script src="/public/js/jquery-2.1.4.js"></script>
     <script src="/public/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="/public/js/memenu.js"></script>
     <script src="/public/js/simpleCart.min.js"></script>
 
-    <script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <!--fonts-->
-    <!--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>-->
-    <!--<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>&lt;!&ndash;//fonts&ndash;&gt;
-    -->
-    <!-- start menu -->
-    <script>
-        $(document).ready(function () {
-            $(".memenu").memenu();
-        });
-    </script>
-    <style>
-        a.order {
-            background: #EF5F21;
-            padding: 10px 20px;
-            font-family: 'Lato', sans-serif;
-            font-size: 1em;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            font-weight: 600;
-            text-align: center;
-            margin: 3em 0 1em 0;
-        }
-
-        a.continue:hover {
-            background-color: orangered;
-        }
-
-        a.order:hover {
-            background: orangered;
-        }
-
-        a.cpns {
-            text-decoration: none;
-        }
-
-        a.cpns:hover {
-            background: orangered;
-        }
-
-        .close {
-            cursor: pointer;
-            width: 28px;
-            height: 28px;
-            font-size: 24px;
-            text-align: center;
-            position: absolute;
-            right: 0;
-            top: 0;
-            -webkit-transition: color 0.2s ease-in-out;
-            -moz-transition: color 0.2s ease-in-out;
-            -o-transition: color 0.2s ease-in-out;
-            transition: color 0.2s ease-in-out;
-        }
-
-        .cart-header {
-            padding-top: 10px;
-            border-radius: 1px;
-        }
-
-        .cart-header:hover {
-            box-shadow: 0 0 3px 1px orangered;
-        }
-
-        #empty {
-            padding: 88px 0 100px 156px;
-            background: url(/public/image/empty-cart.png) 40px 86px no-repeat;
-            position: relative;
-        }
-
-        #empty ul {
-            list-style: none;
-        }
-    </style>
 </head>
 <body>
 <!--header-->
@@ -288,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="cart-sec simpleCart_shelfItem">
                     <div class="cart-item cyc">
-                        <img src="images601/pic1.jpg" class="img-responsive" alt=""/>
+                        <img src="/public/image/product1.jpg" class="img-responsive" alt=""/>
                     </div>
                     <div class="cart-item-info">
                         <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3577</span></h3>
@@ -313,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
                 <div class="cart-sec simpleCart_shelfItem">
                     <div class="cart-item cyc">
-                        <img src="images601/pic2.jpg" class="img-responsive" alt=""/>
+                        <img src="/public/image/shopping-cart.jpg" class="img-responsive" alt=""/>
                     </div>
                     <div class="cart-item-info">
                         <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
@@ -397,35 +316,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-//        删除单件商品
-        $('.close span').on('click', function () {
-            $(this).parent().fadeOut('slow', function () {
-                $(this).parent().remove();
-                var num = $('.cart-header').length;
-                $('.check h1').html('我的购物车 (' + num + ')');
-                if (!num) {
-                    $('.total_price span').html('0.00');
-                    $('.total1:even').html('0.00');
-                    $('.total1:odd').html('---');
-                    $('#empty').removeClass('hide');
-                }
-            });
-        });
-//        清空购物车
-        $('.cpns').on('click', function () {
-            if (confirm('waring: 您将清空购物车!')) {
-                $('#item-lists :first-child~div').remove();
-                $('.check h1').html('我的购物车 (0)');
-                $('.total_price span').html('0.00');
-                $('.total1:even').html('0.00');
-                $('.total1:odd').html('---');
-                $('#empty').removeClass('hide');
-            }
-        })
-    });
-</script>
+
+<script src="/public/js/checkout.js"></script>
 <script src="/public/js/verify-login.js"></script>
 </body>
 </html>
