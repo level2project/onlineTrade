@@ -28,7 +28,7 @@ app.post('/register', function (req, res, next) {
  * 读取商品信息 (响应home.html)
  */
 app.get('/getGoods', function (req, res, next) {
-    usingmysql.getGoods(res, next);
+    usingmysql.getGoods(req, res, next);
 });
 /**
  * 读取商品详细信息 (响应single.html)
@@ -52,7 +52,16 @@ app.post('/addGood', function (req, res, next) {
     })
 });
 /**
- * 添加商品到购物车
+ * 添加商品到购物车(响应single.html)
  */
-//..................................
+app.get('/addToCar', function (req, res, next) {
+    usingmysql.addToCar(req, res, next);
+});
+/**
+ * 获取购物车内容(响应checkout.html)
+ * 参数是当前用户uid  需返回pid、picture1、pname、price、amount、[addDate]
+ */
+app.get('/getCarItem', function (req, res, next) {
+    usingmysql.getCarItem(req, res, next);
+});
 module.exports = app;

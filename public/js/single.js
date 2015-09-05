@@ -44,9 +44,8 @@ $(window).load(function () {
 var a = document.createElement('a')
 a.setAttribute('href', window.location.href);
 var pid = a.search.substr(6);
-//console.log((a.search.substr(6)));
 /**
- * 请求、渲染对应商品信息
+ * ajax获取对应商品信息 并渲染
  */
 $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
     //console.log(text);
@@ -115,7 +114,7 @@ $('.review a').on('click', function () {
 
 $('div.fixW>span:first').on('click', function () {
     var val = $('#pCount').val();
-    if(val <= 2) {
+    if (val <= 2) {
         $('#pCount').val(1);
         $('#pCount').trigger('change');
         $('div.fixW>span').first().removeClass('allow');
@@ -131,9 +130,9 @@ $('div.fixW>span:first').on('click', function () {
 $('div.fixW>span:last').on('click', function () {
     rest = $('#rest').text().substring(4);
     var len = rest.length - 3;
-    rest = rest.substr(0,len);
+    rest = rest.substr(0, len);
     var val = $('#pCount').val();
-    if(val >= +rest - 1) {
+    if (val >= +rest - 1) {
         $('#pCount').val(rest);
         $('#pCount').trigger('change');
         $('div.fixW>span').first().removeClass('not-allow');
@@ -149,20 +148,20 @@ $('div.fixW>span:last').on('click', function () {
 $('#pCount').on('change', function () {
     rest = $('#rest').text().substring(4);
     var len = rest.length - 3;
-    rest = rest.substr(0,len);
+    rest = rest.substr(0, len);
     var val = $('#pCount').val();
-    if(val <= 1) {
+    if (val <= 1) {
         $('#pCount').val(1);
         $('div.fixW>span').first().removeClass('allow');
         $('div.fixW>span').first().addClass('not-allow');
         $('div.fixW>span').last().removeClass('not-allow');
         $('div.fixW>span').last().addClass('allow');
-    } else if(val > 1 && val < +rest) {
+    } else if (val > 1 && val < +rest) {
         $('div.fixW>span').first().removeClass('not-allow');
         $('div.fixW>span').first().addClass('allow');
         $('div.fixW>span').last().removeClass('not-allow');
         $('div.fixW>span').last().addClass('allow');
-    } else if(val >= +rest) {
+    } else if (val >= +rest) {
         $('#pCount').val(rest);
         $('div.fixW>span').first().removeClass('not-allow');
         $('div.fixW>span').first().addClass('allow');
@@ -172,17 +171,45 @@ $('#pCount').on('change', function () {
 });
 
 
-//在下面的三个 其他商品 随机抽取3个商品显示   传递一个pid过去 确保下面三个与当前不同
+/**
+ * ajax获取 在下面的三个 其他商品 随机抽取3个商品显示 并用handlebar渲染
+ * 传递一个pid过去 确保下面三个与当前不同
+ */
 $.get('/verify/threeRandomGood?pid=' + pid, function (text, status) {
     var Data = JSON.parse(text);
     $.each(Data, function (i, obj) {      //对象good 遍历
         fill("good-template", "fill-before", obj);  // 参数为模板id 最终加入DOM结构ID 需添加的数据
     });
 });
-function fill(template_id, fill_id) {     //  获取指定元素id模板 填充数据data后 插回到到id前
+function fill(template_id, fill_id) {     //  获取指定元素template_id模板 填充数据data后 插回到到fill_id前
     var source = $("#" + template_id).html();                 //取得模板
     //console.log(source);
     var template = Handlebars.compile(source);
     var result = template(arguments[2]);           //将数据 填充到模板
     $("#" + fill_id).before(result);//整个模块显示的地方
 };
+
+/**
+ * 添加商品到购物车事件
+ */
+$('#add-good').on('click', function () {
+    //获取uid 从cookie中拿  pid之前获取过了全局变量 直接用
+    var getUid = document.cookie,
+        uid = '';
+    for (i = getUid.indexOf('id=') + 3; i < getUid.length && getUid[i] != ';'; i++) {
+        uid += getUid[i];
+    }
+    $.get('/verify/addToCar', {'pid': pid, 'amount': $('#pCount').val(), 'uid': uid}, function (text, err) {
+        if (/添加成功/.test(text)) {
+            //..这里能不能才跳出那个小框框呢？
+        } else {
+            if (/该商品已经在购物车/.test(text)) {
+                alert('该商品已经在购物车了');
+            }
+            else {
+                alert(JSON.stringify(text).slice(1, -1));
+            }
+        }
+    });
+});
+
