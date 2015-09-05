@@ -14,7 +14,9 @@ var $sql = {               //数据库的操作
     goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
     getAllPid: 'select pid from product',//获取当前所存在的所有pid用于随机抽取3件
     threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
-    addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)'
+    addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)',
+    addToCar: 'insert into cartitem(scid,pid,amount)  select scid,?,? from shoppingcart where uid=?;',
+    getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid '
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -63,7 +65,7 @@ module.exports = {
                 connection.query($sql.queryByNamePassword, [userName, password], function (err, result) {
                     if (!err) {
                         if (result.length == 0) {
-                            console.log('帐号或密码错误')
+                            console.log('帐号或密码错误');
                             res.end('帐号或密码错误');
                         } else {
                             console.log('用户：' + result[0].uid + result[0].username + '帐号验证成功')
@@ -75,7 +77,7 @@ module.exports = {
                     connection.release();
                 });
             }
-            else res.end('database error 1')
+            else res.end('database error 1');
         });
     },
     register: function (req, res, next) {
@@ -110,7 +112,7 @@ module.exports = {
             else res.end('database error');
         });
     },
-    getGoods: function (res, next) {
+    getGoods: function (req, res, next) {
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.getGoods, function (err, result) {
@@ -122,7 +124,7 @@ module.exports = {
                     connection.release();
                 });
             }
-            else res.end('database error ' + err)
+            else res.end('database error ' + err);
         });
     },
     goodDetail: function (req, res, next) {
@@ -162,10 +164,10 @@ module.exports = {
                             }
                         })
                     } else {
-                        res.end('database error' + err)
+                        res.end('database error' + err);
                     }
                     connection.release();
-                })
+                });
             }
             else res.end('database error ' + err);
         })
@@ -193,8 +195,44 @@ module.exports = {
                     connection.release();
                 });
             }
-            else res.end('database error')
+            else res.end('database error');
         });
+    },
+    addToCar: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var uid = para.query.uid;
+        var amount = para.query.amount;
+        var pid = para.query.pid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.addToCar, [pid, amount, uid], function (err, result) {
+                    if (!err) {
+                        res.end('添加成功');
+                    } else {
+                        res.end('该商品已经在购物车了。' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        })
+    },
+    getCarItem: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var uid = para.query.uid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.getCarItem, [uid], function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {
+                        res.end('database error' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        })
     }
 };
 

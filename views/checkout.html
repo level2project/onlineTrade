@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="/public/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="/public/js/memenu.js"></script>
     <script src="/public/js/simpleCart.min.js"></script>
+    <script src="/public/js/handlebars-v3.0.3.js"></script>
 
 </head>
 <body>
@@ -191,7 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
     <div class="check">
-        <h1>我的购物车 (2)</h1>
+        <h1 id="good-num">我的购物车 ()</h1>
         <!--购物车商品列表-->
         <div class="col-md-9 cart-items" id="item-lists">
             <!--当购物车为空时显示-->
@@ -203,55 +204,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <!--购物车商品-->
-            <div class="cart-header">
-                <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
-                <div class="cart-sec simpleCart_shelfItem">
-                    <div class="cart-item cyc">
-                        <img src="/public/image/product1.jpg" class="img-responsive" alt=""/>
-                    </div>
-                    <div class="cart-item-info">
-                        <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3577</span></h3>
-                        <ul class="qty">
-                            <li><p>Size : 5</p></li>
-                            <li><p>Qty : 1</p></li>
-                        </ul>
-
-                        <div class="delivery">
-                            <p>Service Charges : Rs.100.00</p>
-                            <span>Delivered in 2-3 bussiness days</span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-
-                </div>
-            </div>
-
-            <div class="cart-header">
-                <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
-                <div class="cart-sec simpleCart_shelfItem">
-                    <div class="cart-item cyc">
-                        <img src="/public/image/shopping-cart.jpg" class="img-responsive" alt=""/>
-                    </div>
-                    <div class="cart-item-info">
-                        <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-                        <ul class="qty">
-                            <li><p>Size : 5</p></li>
-                            <li><p>Qty : 1</p></li>
-                        </ul>
-                        <div class="delivery">
-                            <p>Service Charges : Rs.100.00</p>
-                            <span>Delivered in 2-3 bussiness days</span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-
+            <!--handlebarsjs填充信息-->
+            <a id="fill-good"></a>
         </div>
         <!--结算-->
         <div class="col-md-3 cart-total">
@@ -260,18 +214,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="price-details">
                 <h3>价格清单</h3>
                 <span>总共</span>
-                <span class="total1">6200.00</span>
+                <span class="total1 money">0.00</span>
                 <span>折扣</span>
                 <span class="total1">---</span>
                 <span>运送费用</span>
-                <span class="total1">150.00</span>
+                <span class="total1">0.00</span>
 
                 <div class="clearfix"></div>
             </div>
             <!--总价-->
             <ul class="total_price">
                 <li class="last_price"><h4>总计</h4></li>
-                <li class="last_price"><span>6350.00</span></li>
+                <li class="last_price"><span class="money">0.00</span></li>
                 <div class="clearfix"></div>
             </ul>
             <div class="clearfix"></div>
@@ -316,7 +270,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
+<script id="good-template" type="text/x-handlebars-template">
+    <div class="cart-header">
+        <div class="close"><span class="glyphicon glyphicon-remove"></span></div>
+        <div class="cart-sec simpleCart_shelfItem">
+            <div class="cart-item cyc">
+                <a href="/single.html?good={{pid}}">
+                    <img src="{{picture1}}" class="img-responsive">
+                </a>
+            </div>
+            <div class="cart-item-info">
+                <h3><a href="/single.html?good={{pid}}">名称：{{pname}}</a><span>Product Id:{{pid}}</span></h3>
+                <ul class="qty">
+                    <!--<li><p>Size : 5</p></li>-->
+                    <li><p>购买数量 : {{amount}}</p></li>
+                </ul>
+                <div class="delivery">
+                    <p>单价: ￥{{price}}</p>
+                    <span>添加时间：×××××× database no such data{{time}}</span>
 
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</script>
 <script src="/public/js/checkout.js"></script>
 <script src="/public/js/verify-login.js"></script>
 </body>

@@ -78,12 +78,12 @@ window.addEventListener('resize', function () {
     var w = $('#goods img').width();
     $('#goods img').height(w);
 });
-function fill(template_id, fill_id) {     //  获取指定元素id模板 填充数据data后 插回到到id前
+function fill(template_id, fill_id) {     //  获取指定元素template_id模板 填充数据data后 插回到到fill_id前
     var source = $("#" + template_id).html();                 //取得模板
     //console.log(source);
     var template = Handlebars.compile(source);
     var result = template(arguments[2]);           //将数据 填充到模板
-    $("#" + fill_id).before(result);//整个模块显示的地方
+    $("#" + fill_id).before(result);               //整个模块显示的地方
 };
 
 /**

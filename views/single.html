@@ -271,7 +271,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--左侧下方最特价-->
     <!--<div class=" per1">-->
-        <!--<a href="#"><img class="img-responsive" src="image/pro.jpg" alt=""></a>-->
+    <!--<a href="#"><img class="img-responsive" src="image/pro.jpg" alt=""></a>-->
     <!--</div>-->
 </div>
 <!--右侧-->
@@ -316,19 +316,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <p id="ptext">comment comment </p>
             <br><br>
+
             <div class="fixed-align">
                 <span class="fixW mkdown">数量:</span>
+
                 <div class="input-group fixW">
                     <span class="input-group-addon glyphicon glyphicon-minus"></span>
                     <input value="1" id="pCount" class="form-control">
                     <span class="input-group-addon glyphicon glyphicon-plus"></span>
                 </div>
                 <span id="rest" class="mkdown letdowm">(还剩 999 件)</span>
+
                 <div class="clearfix"></div>
             </div>
             <br><br><br>
-            <a tabindex="0" class="btn btn-default btn-warning btn-lg btn-block" role="button"
-               data-toggle="popover" data-trigger="focus" title="添加到购物车" data-placement="bottom"
+            <a id='add-good' tabindex="0" class="btn btn-default btn-warning btn-lg btn-block" role="button"
+               data-toggle="popover" data-trigger="focus" title="添加成功" data-placement="bottom"
                data-content="
                    <div style='text-align: center;'><img src='/public/image/sc1.jpg' width='50px' height='50px'></div>
                    <div>
@@ -402,6 +405,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--其他商品-->
     <h3 class="best">Pick Other Goods...</h3><br>
+
     <div class=" bottom-product">
         <!--这里的信息handlebar由填充-->
         <div id='fill-before' class="clearfix"></div>
@@ -444,16 +448,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="/public/js/verify-login.js"></script>
 <script id="good-template" type="text/x-handlebars-template">
     <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-            <div class="product-at ">
+        <div class="product-at ">
             <a href="/single.html?good={{pid}}"><img class="img-responsive fixed-height-bottom" src="{{picture1}}">
 
-            <div class="pro-grid">
-            <span class="buy-in">want it</span>
-    </div>
-    </a>
-    </div>
-    <p class="tun">{{pname}}</p>
-    <a href="/single.html?good={{pid}}" class="item_add"><p class="number item_price"><i> </i>￥{{price}}</p></a>
+                <div class="pro-grid">
+                    <span class="buy-in">want it</span>
+                </div>
+            </a>
+        </div>
+        <p class="tun">{{pname}}</p>
+        <a href="/single.html?good={{pid}}" class="item_add"><p class="number item_price"><i> </i>￥{{price}}</p></a>
     </div>
 </script>
 </body>

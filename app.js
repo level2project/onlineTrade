@@ -32,6 +32,6 @@ app.get('*', function (req, res) {
     })
 })
 /* 端口监听 */
-app.listen(3000, function () {
-    console.log("listening on 3000")
+app.listen(8080, function () {
+    console.log("listening on 8080")
 });
