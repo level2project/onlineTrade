@@ -58,6 +58,12 @@ app.get('/addToCar', function (req, res, next) {
     usingmysql.addToCar(req, res, next);
 });
 /**
+ * 删除购物车中商品(响应single.html)
+ */
+app.get('/removeFromCar', function (req, res, next) {
+    usingmysql.removeFromCar(req, res, next);
+});
+/**
  * 获取购物车内容(响应checkout.html)
  * 参数是当前用户uid  需返回pid、picture1、pname、price、amount、[addDate]
  */

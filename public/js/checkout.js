@@ -11,16 +11,25 @@ $(document).ready(function () {
     $('#item-lists').on('click', 'div div span', function () {
         //$('.close span').on('click', function () {
         $(this).parent().fadeOut('slow', function () {
-            $(this).parent().remove();
-            updateInformation();
-            var num = $('.cart-header').length;
-            $('.check h1').html('我的购物车 (' + num + ')');
-            if (!num) {
-                $('.total_price span').html('0.00');
-                $('.total1:even').html('0.00');
-                $('.total1:odd').html('---');
-                $('#empty').removeClass('hide');
-            }
+            var pid = $(this).next().find('a').attr('href').split('=')[1];
+            //uid之前获取过了
+            var that = this;
+            $.get('/verify/removeFromCar', {pid: pid, uid: uid}, function (text, status) {
+                if (/删除成功/.test(text)) {
+                    $(that).parent().remove();
+                    updateInformation();
+                    var num = $('.cart-header').length;
+                    $('.check h1').html('我的购物车 (' + num + ')');
+                    if (!num) {
+                        $('.total_price span').html('0.00');
+                        $('.total1:even').html('0.00');
+                        $('.total1:odd').html('---');
+                        $('#empty').removeClass('hide');
+                    }
+                }else{
+                    alert(text);
+                }
+            });
         });
     });
 //        清空购物车
