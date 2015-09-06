@@ -10,12 +10,14 @@ var $sql = {               //数据库的操作
     queryByNamePassword: 'select * from user where username=? and password=?',
     register: 'insert into user(username,password,email) values(?,?,?);',
     askForUid: 'select uid from user where username=?',
+    giveCar: 'insert into shoppingcart(uid) values(?)',
     getGoods: 'select pid,pname,ptext,picture1 from product',
     goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
     getAllPid: 'select pid from product',//获取当前所存在的所有pid用于随机抽取3件
     threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)',
     addToCar: 'insert into cartitem(scid,pid,amount)  select scid,?,? from shoppingcart where uid=?;',
+    removeFromCar:'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
     getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid '
 }
 // 使用连接池，提升性能
@@ -97,8 +99,16 @@ module.exports = {
                     if (!err) {//注册成功了 再查询返回用户的uid以备使用
                         connection.query($sql.askForUid, [userName], function (err, result) {
                             if (!err) {
-                                console.log(userName + '注册成功');
-                                res.end('注册成功' + JSON.stringify(result));
+                                //注册成功后 分配购物车
+                                connection.query($sql.giveCar, [result[0]['uid']], function (err){
+                                    if(!err){
+                                        console.log(userName + '注册成功');
+                                        res.end('注册成功' + JSON.stringify(result));
+                                    }else{
+                                        console.log('不是把？');
+                                        res.end('您无法购买商品,请与管理员联系！');
+                                    }
+                                });
                             } else {
                                 res.end('database error');//一般不会有这个问题
                             }
@@ -210,6 +220,24 @@ module.exports = {
                         res.end('添加成功');
                     } else {
                         res.end('该商品已经在购物车了。' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        })
+    },
+    removeFromCar:function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var uid = para.query.uid;
+        var pid = para.query.pid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.removeFromCar, [pid, uid], function (err, result) {
+                    if (!err) {
+                        res.end('删除成功');
+                    } else {
+                        res.end('删除失败？' + err);
                     }
                     connection.release();
                 });
