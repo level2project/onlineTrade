@@ -35,7 +35,7 @@ $().ready(function () {
     var alreadyLogin = document.cookie;
     if (alreadyLogin.indexOf('userName=') != -1) {
         var name = '';
-        for (i = alreadyLogin.indexOf('userName=') + 9; i < alreadyLogin.length && alreadyLogin[i] != ';'; i++) {
+        for (i = alreadyLogin.indexOf('userName=') + 9; i < alreadyLogin.length && (alreadyLogin[i] != ';' && alreadyLogin[i] != '&' ); i++) {
             name += alreadyLogin[i];
         }
         $('#login-before').html('welcome, ' + decodeURI(name));

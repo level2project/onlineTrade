@@ -51,7 +51,7 @@ $(document).ready(function () {
 //先获取uid 从cookie中拿
 var getUid = document.cookie,
     uid = '';
-for (i = getUid.indexOf('id=') + 3; i < getUid.length && getUid[i] != ';'; i++) {
+for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
     uid += getUid[i];
 }
 $.get('/verify/getCarItem?uid=' + uid, function (text, status) {

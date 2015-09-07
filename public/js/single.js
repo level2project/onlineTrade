@@ -196,7 +196,7 @@ $('#add-good').on('click', function () {
     //获取uid 从cookie中拿  pid之前获取过了全局变量 直接用
     var getUid = document.cookie,
         uid = '';
-    for (i = getUid.indexOf('id=') + 3; i < getUid.length && getUid[i] != ';'; i++) {
+    for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
         uid += getUid[i];
     }
     $.get('/verify/addToCar', {'pid': pid, 'amount': $('#pCount').val(), 'uid': uid}, function (text, err) {
