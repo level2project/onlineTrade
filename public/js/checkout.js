@@ -35,12 +35,27 @@ $(document).ready(function () {
 //        清空购物车
     $('.cpns').on('click', function () {
         if (confirm('waring: 您将清空购物车!')) {
-            $('#item-lists :first-child~div').remove();
-            $('.check h1').html('我的购物车 (0)');
-            $('.total_price span').html('0.00');
-            $('.total1:even').html('0.00');
-            $('.total1:odd').html('---');
-            $('#empty').removeClass('hide');
+            var num_before=$('.cart-header').length;
+            var count=0;
+            for(var i=0;i<num_before;i++) {
+                var pid = $($('.cart-header')[i]).children('div').find('a').attr('href').split('=')[1];
+                $.get('/verify/removeFromCar', {pid: pid, uid: uid}, function (text, status) {
+                    if (/删除成功/.test(text)) {
+                        count++;
+                        if(count===num_before) {
+                            $('#item-lists :first-child~div').remove();
+                            $('.check h1').html('我的购物车 (0)');
+                            $('.total_price span').html('0.00');
+                            $('.total1:even').html('0.00');
+                            $('.total1:odd').html('---');
+                            $('#empty').removeClass('hide');
+                            updateInformation();
+                        }
+                    }else{
+                        alert(text);
+                    }
+                })
+            }
         }
     })
 });
@@ -82,6 +97,7 @@ function fill(template_id, fill_id) {    //  获取指定元素template_id模板
 function updateInformation() {
     var toto = 0,
         goodsHtml = ($('.cart-header'));
+    console.log(goodsHtml.length);
     for (var i = 0; i < goodsHtml.length; i++) {
         var num = Number($(goodsHtml[i]).find(".qty").children().children().html().slice(7));
         var dan = Number($(goodsHtml[i]).find(".delivery").children().html().slice(5));
