@@ -23,4 +23,7 @@ app.get('/checkout.html', function (req, res) {
 app.get('/upload.html', function (req, res) {
     res.render('upload');
 });
+app.get('/custom.html', function (req, res) {
+    res.render('custom');
+});
 module.exports = app;
