@@ -70,4 +70,10 @@ app.get('/removeFromCar', function (req, res, next) {
 app.get('/getCarItem', function (req, res, next) {
     usingmysql.getCarItem(req, res, next);
 });
+/**
+ * 确定订单 直接完成付款(响应checkout.html)
+ */
+app.get('/verifyPay', function (req, res, next) {
+    usingmysql.verifyPay(req, res, next);
+});
 module.exports = app;

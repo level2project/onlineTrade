@@ -48,7 +48,7 @@ var pid = a.search.substr(6);
  * ajax获取对应商品信息 并渲染
  */
 $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
-    //console.log(text);
+    console.log(text);
     var Data = JSON.parse(text)[0];
     if (!Data) {//如果返回商品信息是空的 那么跳到404页面 这个主要是应对用户直接修改location的情况
         window.location.href = '/error.html';
@@ -100,7 +100,11 @@ $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
         $('#pcstyle').html(Data.pcstyle);
     if (Data.pcname)
         $('#good-type').html(Data.pcname);
-
+    if(Data.username)
+        $('#owner :eq(0)').html(Data.username);
+    if(Data.email){
+        $('#owner :eq(1)').html(Data.email);
+    }
 });
 
 $('.review a').on('click', function () {

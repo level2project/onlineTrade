@@ -1,3 +1,10 @@
+//先获取uid 从cookie中拿 备用
+var getUid = document.cookie,
+    uid = '';
+for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
+    uid += getUid[i];
+}
+
 addEventListener("load", function () {
     setTimeout(hideURLbar, 0);
 }, false);
@@ -8,7 +15,7 @@ $(document).ready(function () {
     $(".memenu").memenu();
 
 //        删除单件商品
-    $('#item-lists').on('click', 'div div span', function () {
+    $('#item-lists').on('click', '.close span', function () {
         //$('.close span').on('click', function () {
         $(this).parent().fadeOut('slow', function () {
             var pid = $(this).next().find('a').attr('href').split('=')[1];
@@ -26,23 +33,23 @@ $(document).ready(function () {
                         $('.total1:odd').html('---');
                         $('#empty').removeClass('hide');
                     }
-                }else{
+                } else {
                     alert(text);
                 }
             });
         });
     });
 //        清空购物车
-    $('.cpns').on('click', function () {
-        if (confirm('waring: 您将清空购物车!')) {
-            var num_before=$('.cart-header').length;
-            var count=0;
-            for(var i=0;i<num_before;i++) {
+    $('.cpns').on('click', function (event) {
+        if (confirm('您将清空购物车!')) {
+            var num_before = $('.cart-header').length;
+            var count = 0;
+            for (var i = 0; i < num_before; i++) {
                 var pid = $($('.cart-header')[i]).children('div').find('a').attr('href').split('=')[1];
                 $.get('/verify/removeFromCar', {pid: pid, uid: uid}, function (text, status) {
                     if (/删除成功/.test(text)) {
                         count++;
-                        if(count===num_before) {
+                        if (count === num_before) {
                             $('#item-lists :first-child~div').remove();
                             $('.check h1').html('我的购物车 (0)');
                             $('.total_price span').html('0.00');
@@ -51,24 +58,22 @@ $(document).ready(function () {
                             $('#empty').removeClass('hide');
                             updateInformation();
                         }
-                    }else{
+                    } else {
                         alert(text);
                     }
                 })
             }
+        } else {
+            var event = event || window.event;
+            event.preventDefault();
         }
+
     })
 });
 
 /**
  * ajax获取当前用户对应购物车内的信息  并用handlebarjs渲染
  */
-//先获取uid 从cookie中拿
-var getUid = document.cookie,
-    uid = '';
-for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
-    uid += getUid[i];
-}
 $.get('/verify/getCarItem?uid=' + uid, function (text, status) {
     myData = JSON.parse(text);
     $.each(myData, function (i, obj) {      //对象good 遍历
@@ -87,6 +92,7 @@ function fill(template_id, fill_id) {    //  获取指定元素template_id模板
     var source = $("#" + template_id).html();                 //取得模板
     //console.log(source);
     var template = Handlebars.compile(source);
+    arguments[2]['addtime']=arguments[2]['addtime'].substr(0,10);//这样处理时间会不会很暴力？
     var result = template(arguments[2]);           //将数据 填充到模板
     $("#" + fill_id).before(result);//整个模块显示的地方
 };
@@ -97,7 +103,7 @@ function fill(template_id, fill_id) {    //  获取指定元素template_id模板
 function updateInformation() {
     var toto = 0,
         goodsHtml = ($('.cart-header'));
-    console.log(goodsHtml.length);
+    //console.log(goodsHtml.length);
     for (var i = 0; i < goodsHtml.length; i++) {
         var num = Number($(goodsHtml[i]).find(".qty").children().children().html().slice(7));
         var dan = Number($(goodsHtml[i]).find(".delivery").children().html().slice(5));
@@ -105,3 +111,18 @@ function updateInformation() {
     }
     $('.money').html(toto.toFixed(2));
 }
+
+
+$('#pay').on('click', function (event) {
+    if (confirm('确认付款？')) {
+        alert('还不能点 - - ！');
+        return;
+        $.get('/verify/verifyPay', {uid: uid}, function (text, status) {
+            console.log(text);
+            alert('付款成功');
+            window.location.href = '/custom.html';
+        });
+    }
+    var event = event || window.event;
+    event.preventDefault();
+});

@@ -12,13 +12,14 @@ var $sql = {               //数据库的操作
     askForUid: 'select uid from user where username=?',
     giveCar: 'insert into shoppingcart(uid) values(?)',
     getGoods: 'select pid,pname,ptext,picture1 from product',
-    goodDetail: 'select * from product,pcategory where product.pid=? && product.pcid=pcategory.pcid',
+    goodDetail: 'select * from product,pcategory,user where product.pid=? && product.pcid=pcategory.pcid && user.uid=product.sellerid',
     getAllPid: 'select pid from product',//获取当前所存在的所有pid用于随机抽取3件
     threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)',
     addToCar: 'insert into cartitem(scid,pid,amount)  select scid,?,? from shoppingcart where uid=?;',
     removeFromCar:'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
-    getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid '
+    getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount,addtime from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid',
+    verifyPay : ''
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -251,6 +252,26 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.getCarItem, [uid], function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {
+                        res.end('database error' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        })
+    },
+    verifyPay: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var uid = para.query.uid;
+        console.log(uid);
+        res.end('well');
+        return;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.verifyPay, [uid], function (err, result) {
                     if (!err) {
                         res.end(JSON.stringify(result));
                     } else {
