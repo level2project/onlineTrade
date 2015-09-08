@@ -23,6 +23,7 @@ $(window).load(function () {
                 $('a[tabindex]').popover('hide');
             }
         } else {
+            $('a[tabindex]').attr('href','#rest');
             $('a[tabindex]').popover({
                 animation: true,
                 delay: { "show": 200, "hide": 100 },
