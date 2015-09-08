@@ -30,6 +30,9 @@ app.post('/register', function (req, res, next) {
 app.get('/getGoods', function (req, res, next) {
     usingmysql.getGoods(req, res, next);
 });
+app.get('/getSearchGoods', function (req, res, next) {
+    usingmysql.getSearchGoods(req, res, next);
+});
 /**
  * 读取商品详细信息 (响应single.html)
  */

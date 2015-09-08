@@ -102,9 +102,9 @@ $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
     if (Data.pcname)
         $('#good-type').html(Data.pcname);
     if(Data.username)
-        $('#owner :eq(0)').html(Data.username);
+        $('#good-owner :eq(0)').html($('#good-owner :eq(0)').html()+Data.username);
     if(Data.email){
-        $('#owner :eq(1)').html(Data.email);
+        $('#good-owner :eq(1)').html($('#good-owner :eq(1)').html()+Data.email);
     }
 });
 

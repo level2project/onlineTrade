@@ -12,14 +12,15 @@ var $sql = {               //数据库的操作
     askForUid: 'select uid from user where username=?',
     giveCar: 'insert into shoppingcart(uid) values(?)',
     getGoods: 'select pid,pname,ptext,picture1 from product',
+    getSearchGoods: 'select pid,pname,ptext,picture1 from product where pname like ?',
     goodDetail: 'select * from product,pcategory,user where product.pid=? && product.pcid=pcategory.pcid && user.uid=product.sellerid',
     getAllPid: 'select pid from product',//获取当前所存在的所有pid用于随机抽取3件
     threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)',
     addToCar: 'insert into cartitem(scid,pid,amount)  select scid,?,? from shoppingcart where uid=?;',
-    removeFromCar:'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
+    removeFromCar: 'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
     getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount,addtime from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid',
-    verifyPay : ''
+    verifyPay: ''
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -101,11 +102,11 @@ module.exports = {
                         connection.query($sql.askForUid, [userName], function (err, result) {
                             if (!err) {
                                 //注册成功后 分配购物车
-                                connection.query($sql.giveCar, [result[0]['uid']], function (err){
-                                    if(!err){
+                                connection.query($sql.giveCar, [result[0]['uid']], function (err) {
+                                    if (!err) {
                                         console.log(userName + '注册成功');
                                         res.end('注册成功' + JSON.stringify(result));
-                                    }else{
+                                    } else {
                                         console.log('不是把？');
                                         res.end('您无法购买商品,请与管理员联系！');
                                     }
@@ -129,7 +130,27 @@ module.exports = {
                 connection.query($sql.getGoods, function (err, result) {
                     if (!err) {
                         res.end(JSON.stringify(result));
-                    } else {  //如果出错了 是帐号已被注册
+                    } else {
+                        res.end('database error ' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        });
+    },
+    getSearchGoods: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var searchStr = '%';
+        searchStr += para.query.searchStr;
+        searchStr += '%';
+        console.log(我来知道有人用过搜索功能没 + searchStr);
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.getSearchGoods, [searchStr], function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {
                         res.end('database error ' + err);
                     }
                     connection.release();
@@ -228,7 +249,7 @@ module.exports = {
             else res.end('database error ' + err);
         })
     },
-    removeFromCar:function (req, res, next) {
+    removeFromCar: function (req, res, next) {
         var para = url.parse(req.url, true);
         var uid = para.query.uid;
         var pid = para.query.pid;

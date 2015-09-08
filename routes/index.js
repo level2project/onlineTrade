@@ -26,4 +26,7 @@ app.get('/upload.html', function (req, res) {
 app.get('/custom.html', function (req, res) {
     res.render('custom');
 });
+app.get('/search.html', function (req, res) {
+    res.render('search');
+});
 module.exports = app;
