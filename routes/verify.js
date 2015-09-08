@@ -30,6 +30,9 @@ app.post('/register', function (req, res, next) {
 app.get('/getGoods', function (req, res, next) {
     usingmysql.getGoods(req, res, next);
 });
+app.get('/getSearchGoods', function (req, res, next) {
+    usingmysql.getSearchGoods(req, res, next);
+});
 /**
  * 读取商品详细信息 (响应single.html)
  */
@@ -69,5 +72,11 @@ app.get('/removeFromCar', function (req, res, next) {
  */
 app.get('/getCarItem', function (req, res, next) {
     usingmysql.getCarItem(req, res, next);
+});
+/**
+ * 确定订单 直接完成付款(响应checkout.html)
+ */
+app.get('/verifyPay', function (req, res, next) {
+    usingmysql.verifyPay(req, res, next);
 });
 module.exports = app;

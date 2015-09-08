@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 买家中心 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">已买到的宝贝</a></li>
+                                <li><a href="custom.html">已买到的宝贝</a></li>
                             </ul>
                         </li>
                         <li class="dropdown" id="owner">
@@ -66,8 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                             <ul class="dropdown-menu" id="seller">
                                 <li><a href="login.html">我有宝贝想卖</a></li>
-                                <li><a href="#">已卖出的宝贝</a></li>
-                                <li><a href="#">出售中的宝贝</a></li>
+                                <li><a href="#">已卖出的宝贝×</a></li>
+                                <li><a href="#">出售中的宝贝×</a></li>
                             </ul>
                         </li>
                         <li id="shopping-car">
@@ -229,11 +229,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"></div>
             </ul>
             <div class="clearfix"></div>
-            <a class="order" href="#">提交订单</a>
+            <a class="order" href="" id="pay">提交订单并付款</a><br>
             <!--取消购物-->
             <div class="total-item">
                 <h3>您还可以</h3>
-                <h4><a class="cpns" href="#empty">清空购物车</a></h4>
+                <a class="cpns" style="float:right" href="">清空购物车</a>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -285,7 +285,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="delivery">
                     <p>单价: ￥{{price}}</p>
-                    <span>添加时间：×××××× database no such data{{time}}</span>
+                    <span>添加时间：{{addtime}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
                     <div class="clearfix"></div>
                 </div>

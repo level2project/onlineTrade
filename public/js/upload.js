@@ -148,7 +148,7 @@ $('#affirm').on('click', function () {
     //处理卖家ID 从cookie中拿 （sellerid 对应 user表中的 uid）
     var getUid = document.cookie;
     var uid = '';
-    for (i = getUid.indexOf('id=') + 3; i < getUid.length && getUid[i] != ';'; i++) {
+    for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
         uid += getUid[i];
     }
     data += '&sellerid=' + uid;

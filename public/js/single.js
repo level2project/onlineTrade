@@ -49,7 +49,7 @@ var pid = a.search.substr(6);
  * ajax获取对应商品信息 并渲染
  */
 $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
-    //console.log(text);
+    console.log(text);
     var Data = JSON.parse(text)[0];
     if (!Data) {//如果返回商品信息是空的 那么跳到404页面 这个主要是应对用户直接修改location的情况
         window.location.href = '/error.html';
@@ -101,7 +101,11 @@ $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
         $('#pcstyle').html(Data.pcstyle);
     if (Data.pcname)
         $('#good-type').html(Data.pcname);
-
+    if(Data.username)
+        $('#good-owner :eq(0)').html($('#good-owner :eq(0)').html()+Data.username);
+    if(Data.email){
+        $('#good-owner :eq(1)').html($('#good-owner :eq(1)').html()+Data.email);
+    }
 });
 
 $('.review a').on('click', function () {
@@ -197,7 +201,7 @@ $('#add-good').on('click', function () {
     //获取uid 从cookie中拿  pid之前获取过了全局变量 直接用
     var getUid = document.cookie,
         uid = '';
-    for (i = getUid.indexOf('id=') + 3; i < getUid.length && getUid[i] != ';'; i++) {
+    for (i = getUid.indexOf('id=') + 3; i < getUid.length && (getUid[i] != ';' && getUid[i] != '&'); i++) {
         uid += getUid[i];
     }
     $.get('/verify/addToCar', {'pid': pid, 'amount': $('#pCount').val(), 'uid': uid}, function (text, err) {

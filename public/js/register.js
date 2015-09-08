@@ -10,6 +10,11 @@ $('#registerBtn').on('click', function (event) {
         alert("帐号或密码不能为空");
         return;
     }
+    if (!(/^[0-9a-zA-Z][0-9a-zA-Z][0-9a-zA-Z][0-9a-zA-Z][0-9a-zA-Z]+$/.test($('#userName').val()))) {
+        event.preventDefault();//阻止默认行为
+        alert('帐号必须是5位（含）以上英文/数字组合');
+        return;
+    }
     if (!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test($('#email').val()))) {
         event.preventDefault();//阻止默认行为
         alert('请输入正确的邮箱');
