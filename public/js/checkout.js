@@ -114,15 +114,15 @@ function updateInformation() {
 
 
 $('#pay').on('click', function (event) {
+    var event = event || window.event;
+    event.preventDefault();
+    alert('未完成。。。');
+    return;
     if (confirm('确认付款？')) {
-        alert('还不能点 - - ！');
-        return;
         $.get('/verify/verifyPay', {uid: uid}, function (text, status) {
             console.log(text);
             alert('付款成功');
             window.location.href = '/custom.html';
         });
     }
-    var event = event || window.event;
-    event.preventDefault();
 });
