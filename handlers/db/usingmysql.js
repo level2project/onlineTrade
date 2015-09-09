@@ -22,8 +22,12 @@ var $sql = {               //数据库的操作
     //判断是不是正在买自己的商品
     removeFromCar: 'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
     getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount,addtime from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid',
-    verifyPay: '',
-    getOrderItem: ''
+    verifyPayDo1: 'insert into salesorder(sellerid,buyerid,aid,statue) select sellerid,?,1,"已完成" from shoppingcart,cartitem,product ' +
+        'where (shoppingcart.uid = ? && shoppingcart.scid=cartitem.scid && cartitem.pid=product.pid) group by sellerid; ',
+    verifyPayDo2: 'insert into orderitem(sid,pid,amount) select sid,product.pid,cartitem.amount from shoppingcart,cartitem,product,salesorder ' +
+        'where (shoppingcart.uid = ? && shoppingcart.scid=cartitem.scid && cartitem.pid=product.pid  && salesorder.buyerid = ? && salesorder.sellerid=product.sellerid);',
+    verifyPayDo3: 'delete from cartitem where scid = (select scid from shoppingcart where uid=?);',
+    getOrderItem: 'select product.pid,picture1,pname,price,orderitem.amount,stime from product,salesorder,orderitem where buyerid=? && salesorder.sid = orderitem.sid && orderitem.pid = product.pid'
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -300,16 +304,26 @@ module.exports = {
     verifyPay: function (req, res, next) {
         var para = url.parse(req.url, true);
         var uid = para.query.uid;
-        console.log(uid);
-        res.end('well');
-        return;
+        //console.log(uid);
         pool.getConnection(function (err, connection) {
             if (!err) {
-                connection.query($sql.verifyPay, [uid], function (err, result) {
+                connection.query($sql.verifyPayDo1, [uid, uid], function (err, result) {
                     if (!err) {
-                        res.end(JSON.stringify(result));
+                        connection.query($sql.verifyPayDo2, [uid, uid], function (err, result) {
+                            if(!err){
+                                connection.query($sql.verifyPayDo3, [uid], function (err, result) {
+                                    if(!err){
+                                        res.end('付款成功。');
+                                    }else{
+                                        res.end('database error at delete from cartitem  ' + err);
+                                    }
+                                });
+                            }else{
+                                res.end('购买同一商家商品还有问题 待解决。。。database error at insert into orderitem ' + err);
+                            }
+                        });
                     } else {
-                        res.end('database error' + err);
+                        res.end('database error at insert into salesorder ' + err);
                     }
                     connection.release();
                 });

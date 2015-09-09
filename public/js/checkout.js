@@ -116,13 +116,19 @@ function updateInformation() {
 $('#pay').on('click', function (event) {
     var event = event || window.event;
     event.preventDefault();
-    alert('未完成。。。');
-    return;
+    if($('#empty').siblings().length === 1){
+        alert('您还没有需要下单的商品呢！');
+        return;
+    }
     if (confirm('确认付款？')) {
         $.get('/verify/verifyPay', {uid: uid}, function (text, status) {
-            console.log(text);
-            alert('付款成功');
-            window.location.href = '/custom.html';
+            if(/付款成功/.test(text)){
+                alert('付款成功');
+                window.location.href = '/custom.html';
+            }else{
+                alert(text.toString());
+            }
+
         });
     }
 });

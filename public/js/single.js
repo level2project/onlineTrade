@@ -194,7 +194,7 @@ $('#add-good').on('click', function (event) {
                 animation: true,
                 delay: { "show": 200, "hide": 100 },
                 html: true
-            }).focus().popover({delay: {"show": 0, "hide": 0}});
+            }).focus();
 
             //..这里能不能才跳出那个小框框呢？
         } else if (/该商品已经在购物车/.test(text)) {
