@@ -20,6 +20,7 @@ $().ready(function () {
         $('#shopping-car a').attr('href', 'checkout.html');             //购物车的href修正
         //console.log($('#seller *').first().html())
         $('#seller *').first().children(1).attr('href', 'upload.html');         //上传宝贝的href修正
+        $('#custom').attr('href', 'custom.html');
     }
 
 })
