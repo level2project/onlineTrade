@@ -18,9 +18,12 @@ var $sql = {               //数据库的操作
     threeRandomGood: 'select pid,pname,price,picture1 from product where pid=? or pid=? or pid=?',
     addGood: 'insert into product(sellerid,pname,ptext,price,amount,picture1,picture2,picture3,introduction) values(?,?,?,?,?,?,?,?,?)',
     addToCar: 'insert into cartitem(scid,pid,amount)  select scid,?,? from shoppingcart where uid=?;',
+    checkGood: 'select * from product where sellerid=? && pid=?',
+    //判断是不是正在买自己的商品
     removeFromCar: 'delete from cartitem where pid=? and scid= (select scid from shoppingcart where uid=?)',
     getCarItem: 'select cartitem.pid,picture1,pname,price,cartitem.amount,addtime from shoppingcart,cartitem,product where shoppingcart.uid = ? && shoppingcart.scid = cartitem.scid && cartitem.pid = product.pid',
-    verifyPay: ''
+    verifyPay: '',
+    getOrderItem: ''
 }
 // 使用连接池，提升性能
 var pool = mysql.createPool($conf.mysql);
@@ -144,7 +147,7 @@ module.exports = {
         var searchStr = '%';
         searchStr += para.query.searchStr;
         searchStr += '%';
-        console.log(我来知道有人用过搜索功能没 + searchStr);
+        console.log('我来知道有人用过搜索功能没' + searchStr);
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.getSearchGoods, [searchStr], function (err, result) {
@@ -237,13 +240,23 @@ module.exports = {
         var pid = para.query.pid;
         pool.getConnection(function (err, connection) {
             if (!err) {
-                connection.query($sql.addToCar, [pid, amount, uid], function (err, result) {
+                connection.query($sql.checkGood, [uid, pid], function (err, result) {
                     if (!err) {
-                        res.end('添加成功');
+                        if (result.length !== 0) {//如果有返回值，证明是正在买自己的商品
+                            res.end('不能购买自己的商品！！');
+                        } else {
+                            connection.query($sql.addToCar, [pid, amount, uid], function (err, result) {
+                                if (!err) {
+                                    res.end('添加成功');
+                                } else {
+                                    res.end('该商品已经在购物车了。' + err);
+                                }
+                                connection.release();
+                            });
+                        }
                     } else {
-                        res.end('该商品已经在购物车了。' + err);
+                        res.end('这是什么错误？' + err);
                     }
-                    connection.release();
                 });
             }
             else res.end('database error ' + err);
@@ -293,6 +306,23 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (!err) {
                 connection.query($sql.verifyPay, [uid], function (err, result) {
+                    if (!err) {
+                        res.end(JSON.stringify(result));
+                    } else {
+                        res.end('database error' + err);
+                    }
+                    connection.release();
+                });
+            }
+            else res.end('database error ' + err);
+        })
+    },
+    getOrderItem: function (req, res, next) {
+        var para = url.parse(req.url, true);
+        var uid = para.query.uid;
+        pool.getConnection(function (err, connection) {
+            if (!err) {
+                connection.query($sql.getOrderItem, [uid], function (err, result) {
                     if (!err) {
                         res.end(JSON.stringify(result));
                     } else {

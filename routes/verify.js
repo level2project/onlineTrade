@@ -79,4 +79,11 @@ app.get('/getCarItem', function (req, res, next) {
 app.get('/verifyPay', function (req, res, next) {
     usingmysql.verifyPay(req, res, next);
 });
+/**
+ * 获取购物车内容(响应checkout.html)
+ * 参数是当前用户uid  需返回pid、picture1、pname、price、amount、[addDate]
+ */
+app.get('/getOrderItem', function (req, res, next) {
+    usingmysql.getOrderItem(req, res, next);
+});
 module.exports = app;

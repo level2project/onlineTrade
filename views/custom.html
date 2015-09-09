@@ -12,12 +12,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="/public/css601/memenu.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/public/css/whole.css" rel="stylesheet">
     <!--<link href="/public/css/custom.css" rel="stylesheet">-->
+    <link href="/public/css/checkout.css" rel="stylesheet">
 
     <script src="/public/js/jquery-2.1.4.js"></script>
     <script src="/public/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="/public/js/memenu.js"></script>
     <script src="/public/js/simpleCart.min.js"></script>
-    <!--<script src="/public/js/handlebars-v3.0.3.js"></script>-->
+    <script src="/public/js/handlebars-v3.0.3.js"></script>
     <style>
         #empty {
             padding: 88px 0 100px 156px;
@@ -198,21 +199,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="container">
     <div class="check">
-        <h1 id="good-num">我的宝贝（未完成。。。）</h1>
-        <!--购物车商品列表-->
+        <h1 id="good-num">我的宝贝(not finished)</h1>
+        <!--已买到的宝贝列表-->
         <div class="col-md-9 cart-items" id="item-lists">
-            <!--当购物车为空时显示-->
-            <div id="empty" class="">
+            <!--当我的宝贝为空时显示-->
+            <div id="empty" class="hide">
                 <br>
                 <h4><strong>您还未拥有任何宝贝哟,现在<a href="home.html" target="_self">去购物</a>吧</strong></h4>
             </div>
+            <!--handlebarsjs填充信息-->
+            <a id="fill-good"></a>
         </div>
-        <!--结算-->
+        <!--右侧-->
         <div class="col-md-3 cart-total">
-            <!--左侧热卖栏-->
+            <!--推荐栏-->
             <div class="product-bottom">
                 <div class="of-left-in">
                     <h3 class="best">为您推荐</h3>
+                </div>
+                <div class="product-go">
+                    <div class=" fashion-grid">
+                        <a href="#"><img class="img-responsive " src="image/p1.jpg" alt=""></a>
+
+                    </div>
+                    <div class=" fashion-grid1">
+                        <h6 class="best2"><a href="#">comment
+                            comment </a></h6>
+
+                        <span class=" price-in1"> ￥2.00</span>
+                    </div>
+
+                    <div class="clearfix"></div>
                 </div>
                 <div class="product-go">
                     <div class=" fashion-grid">
@@ -244,7 +261,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
             </div>
-            <!--左侧下方最特价-->
+            <!--下方最特价-->
             <!--<div class=" per1">-->
             <!--<a href="#"><img class="img-responsive" src="image/pro.jpg" alt=""></a>-->
             <!--</div>-->
@@ -285,6 +302,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $(".memenu").memenu();
     });
 </script>
+<script id="good-template" type="text/x-handlebars-template">
+    <div class="cart-header">
+        <div class="cart-sec simpleCart_shelfItem">
+            <div class="cart-item cyc">
+                <a href="/single.html?good={{pid}}">
+                    <img src="{{picture1}}" class="img-responsive">
+                </a>
+            </div>
+            <div class="cart-item-info">
+                <h3><a href="/single.html?good={{pid}}">名称：{{pname}}</a><span>Product Id:{{pid}}</span></h3>
+                <ul class="qty">
+                    <!--<li><p>Size : 5</p></li>-->
+                    <li><p>购买数量 : {{amount}}</p></li>
+                </ul>
+                <div class="delivery">
+                    <p>单价: ￥{{price}}</p>
+                    <span>购买时间：{{addtime}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</script>
+<script src="/public/js/custom.js"></script>
 <script src="/public/js/verify-login.js"></script>
 </body>
 </html>

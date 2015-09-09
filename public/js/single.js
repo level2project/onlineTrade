@@ -1,41 +1,16 @@
+var rest = null;
 addEventListener("load", function () {
     setTimeout(hideURLbar, 0);
 }, false);
 function hideURLbar() {
     window.scrollTo(0, 1);
 }
-$(document).ready(function () {
-    $(".memenu").memenu();
-});
 
-var rest = null;
 // Can also be used with $(document).ready()
 $(window).load(function () {
-    var flag = true;
+    $(".memenu").memenu();
     $('div.fixW>span').first().addClass('not-allow');
     $('div.fixW>span').last().addClass('allow');
-    $('a[tabindex]').on('click', function () {
-        var alreadyLogin = document.cookie;
-        if (alreadyLogin.indexOf('userName=') == -1) {
-            if (confirm('请先登录')) {
-                window.location.href = 'login.html';
-            } else {
-                $('a[tabindex]').popover('hide');
-            }
-        } else {
-            //$('a[tabindex]').attr('href','#rest');
-            $('a[tabindex]').popover({
-                animation: true,
-                delay: { "show": 200, "hide": 100 },
-                html: true
-            });
-            if (flag) {
-                $('a[tabindex]').popover('show');
-                flag = false;
-            }
-
-        }
-    });
 });
 
 
@@ -49,7 +24,7 @@ var pid = a.search.substr(6);
  * ajax获取对应商品信息 并渲染
  */
 $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
-    console.log(text);
+    //console.log(text);
     var Data = JSON.parse(text)[0];
     if (!Data) {//如果返回商品信息是空的 那么跳到404页面 这个主要是应对用户直接修改location的情况
         window.location.href = '/error.html';
@@ -101,10 +76,10 @@ $.get('/verify/goodDetail', {pid: pid}, function (text, status) {
         $('#pcstyle').html(Data.pcstyle);
     if (Data.pcname)
         $('#good-type').html(Data.pcname);
-    if(Data.username)
-        $('#good-owner :eq(0)').html($('#good-owner :eq(0)').html()+Data.username);
-    if(Data.email){
-        $('#good-owner :eq(1)').html($('#good-owner :eq(1)').html()+Data.email);
+    if (Data.username)
+        $('#good-owner :eq(0)').html($('#good-owner :eq(0)').html() + Data.username);
+    if (Data.email) {
+        $('#good-owner :eq(1)').html($('#good-owner :eq(1)').html() + Data.email);
     }
 });
 
@@ -115,7 +90,6 @@ $('.review a').on('click', function () {
     console.log($('.cd-tabs-content>li:last').html());
     $('.cd-tabs-content>li:last').addClass('selected');
 });
-
 
 $('div.fixW>span:first').on('click', function () {
     var val = $('#pCount').val();
@@ -194,10 +168,20 @@ function fill(template_id, fill_id) {     //  获取指定元素template_id模�
     $("#" + fill_id).before(result);//整个模块显示的地方
 };
 
+
 /**
  * 添加商品到购物车事件
  */
-$('#add-good').on('click', function () {
+$('#add-good').on('click', function (event) {
+    var event = event || window.event;
+    event.preventDefault();
+    //先判断有没登录
+    var alreadyLogin = document.cookie;
+    if (alreadyLogin.indexOf('userName=') == -1) {
+        window.location.href = 'login.html';
+        return;
+    }
+
     //获取uid 从cookie中拿  pid之前获取过了全局变量 直接用
     var getUid = document.cookie,
         uid = '';
@@ -206,15 +190,21 @@ $('#add-good').on('click', function () {
     }
     $.get('/verify/addToCar', {'pid': pid, 'amount': $('#pCount').val(), 'uid': uid}, function (text, err) {
         if (/添加成功/.test(text)) {
+            $('a[tabindex]').popover({
+                animation: true,
+                delay: { "show": 200, "hide": 100 },
+                html: true
+            }).focus().popover({delay: {"show": 0, "hide": 0}});
+
             //..这里能不能才跳出那个小框框呢？
+        } else if (/该商品已经在购物车/.test(text)) {
+            alert('该商品已经在购物车了..');
+        } else if (/不能购买自己的/.test(text)) {
+            alert('不能购买自己的商品！！');
         } else {
-            if (/该商品已经在购物车/.test(text)) {
-                alert('该商品已经在购物车了');
-            }
-            else {
-                alert(JSON.stringify(text).slice(1, -1));
-            }
+            alert(JSON.stringify(text).slice(1, -1));
         }
+
     });
 });
 
